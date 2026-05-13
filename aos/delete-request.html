@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>데이터 삭제 요청 - 한표 민심</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 16px;
+      padding: 48px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .logo {
+      width: 48px;
+      height: 48px;
+      background: #2563EB;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .app-name { font-size: 20px; font-weight: 700; color: #1e293b; }
+    .app-sub { font-size: 13px; color: #64748b; margin-top: 2px; }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .subtitle {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .section {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #2563EB;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.6;
+    }
+    .item:last-child { margin-bottom: 0; }
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #2563EB;
+      border-radius: 50%;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+    .cta {
+      margin-top: 28px;
+      text-align: center;
+    }
+    .cta a {
+      display: inline-block;
+      background: #2563EB;
+      color: white;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .cta-sub {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 12px;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 28px 0;
+    }
+    .note {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.7;
+    }
+    .updated {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">한</div>
+      <div>
+        <div class="app-name">한표 - 민심</div>
+        <div class="app-sub">지금 한국인들은 어떻게 생각할까?</div>
+      </div>
+    </div>
+
+    <h1>데이터 삭제 요청</h1>
+    <p class="subtitle">
+      한표 - 민심 앱에서 수집된 데이터의 삭제를 요청하실 수 있습니다.<br>
+      아래 버튼을 눌러 이메일로 요청해 주세요.
+    </p>
+
+    <div class="section">
+      <div class="section-title">삭제 가능한 데이터</div>
+      <div class="item"><div class="dot"></div>기기 고유 ID (ANDROID_ID) 기반 식별 정보</div>
+      <div class="item"><div class="dot"></div>투표 참여 기록 (선택한 항목, 참여 시각)</div>
+      <div class="item"><div class="dot"></div>프로필 정보 (성별, 연령대 — 설정한 경우)</div>
+      <div class="item"><div class="dot"></div>FCM 푸시 토큰</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">처리 안내</div>
+      <div class="item"><div class="dot"></div>요청 접수 후 영업일 기준 7일 이내 처리</div>
+      <div class="item"><div class="dot"></div>삭제 완료 후 이메일로 결과 안내</div>
+      <div class="item"><div class="dot"></div>삭제된 데이터는 복구되지 않습니다</div>
+    </div>
+
+    <div class="cta">
+      <a href="mailto:master@ghost3d.net?subject=한표 민심 데이터 삭제 요청&body=안녕하세요.%0A%0A아래 정보로 데이터 삭제를 요청합니다.%0A%0A기기 정보: (앱 설정 > 기기 ID를 복사하여 붙여넣어 주세요)%0A삭제 요청 항목: 전체 / 투표 기록만 / 프로필만 (해당 항목 선택)%0A%0A감사합니다.">
+        이메일로 삭제 요청하기
+      </a>
+      <div class="cta-sub">master@ghost3d.net</div>
+    </div>
+
+    <hr class="divider">
+
+    <p class="note">
+      앱 내 <strong>설정 탭 → 기기 ID</strong>를 확인하여 이메일에 함께 첨부해 주시면
+      더 빠르게 처리됩니다.
+    </p>
+
+    <div class="updated">한표 - 민심 · 최종 업데이트: 2026년 5월</div>
+  </div>
+</body>
+</html>
