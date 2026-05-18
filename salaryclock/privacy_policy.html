@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SalaryClock — Privacy Policy</title>
+<style>
+  :root {
+    --bg: #0a0f1e;
+    --surface: #111827;
+    --border: #1e2d4a;
+    --green: #4ade80;
+    --green-dim: rgba(74,222,128,0.1);
+    --text: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --font-sans: 'Pretendard', 'Apple SD Gothic Neo', system-ui, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 15px; line-height: 1.8; min-height: 100vh; }
+  .lang-bar { position: sticky; top: 0; z-index: 100; background: rgba(10,15,30,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 12px 40px; display: flex; align-items: center; justify-content: space-between; }
+  .lang-bar .logo { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--green); letter-spacing: 0.05em; }
+  .lang-bar .logo span { width: 28px; height: 28px; background: var(--green-dim); border: 1px solid var(--green); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .lang-switcher { display: flex; gap: 6px; }
+  .lang-btn { padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: var(--font-sans); }
+  .lang-btn:hover { border-color: var(--green); color: var(--green); }
+  .lang-btn.active { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+  .container { max-width: 720px; margin: 0 auto; padding: 60px 40px 100px; }
+  .header { margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+  .app-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--green-dim); border: 1px solid rgba(74,222,128,0.3); border-radius: 20px; padding: 6px 14px; font-size: 12px; color: var(--green); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 24px; }
+  h1 { font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em; }
+  h1 span { color: var(--green); }
+  .meta { font-size: 13px; color: var(--text-secondary); font-family: var(--font-mono); }
+  .summary-box { background: var(--green-dim); border: 1px solid rgba(74,222,128,0.25); border-radius: 12px; padding: 20px 24px; margin: 40px 0; }
+  .summary-box p { font-size: 14px; color: var(--green); line-height: 1.7; }
+  .summary-box strong { font-weight: 600; }
+  section { margin-bottom: 48px; }
+  h2 { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 16px; padding-left: 14px; border-left: 3px solid var(--green); line-height: 1.4; }
+  p { color: var(--text-secondary); margin-bottom: 12px; font-size: 14px; }
+  ul { list-style: none; padding: 0; margin: 12px 0; }
+  ul li { color: var(--text-secondary); font-size: 14px; padding: 6px 0 6px 20px; position: relative; }
+  ul li::before { content: '—'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .highlight { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+  .highlight p { margin: 0; }
+  .contact-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 16px; }
+  .contact-box a { color: var(--green); text-decoration: none; font-family: var(--font-mono); font-size: 13px; }
+  .contact-box a:hover { text-decoration: underline; }
+  .footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--border); text-align: center; font-size: 12px; color: var(--text-secondary); font-family: var(--font-mono); }
+  .lang-content { display: none; }
+  .lang-content.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <div class="logo"><span>💰</span>SalaryClock</div>
+  <div class="lang-switcher">
+    <button class="lang-btn" onclick="setLang('ko', this)">한국어</button>
+    <button class="lang-btn active" onclick="setLang('en', this)">English</button>
+    <button class="lang-btn" onclick="setLang('ja', this)">日本語</button>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 한국어 -->
+  <div class="lang-content" id="lang-ko">
+    <div class="header">
+      <div class="app-badge">📄 개인정보 처리방침</div>
+      <h1>SalaryClock은<br><span>당신의 데이터를</span><br>수집하지 않습니다</h1>
+      <div class="meta">최종 수정: 2026년 5월 18일 · 버전 1.0</div>
+    </div>
+    <div class="summary-box">
+      <p><strong>한 줄 요약:</strong> SalaryClock은 연봉 등 모든 데이터를 기기 내에만 저장하며, 외부 서버로 전송하거나 제3자와 공유하지 않습니다.</p>
+    </div>
+    <section>
+      <h2>수집하는 정보</h2>
+      <p>SalaryClock은 다음 정보를 사용자의 기기 내 UserDefaults에 로컬로 저장합니다.</p>
+      <ul>
+        <li>연봉 또는 시급 (입력값)</li>
+        <li>출근/퇴근 시간 설정</li>
+        <li>주 근무일 설정</li>
+        <li>메뉴바 표시 설정</li>
+        <li>오늘 지출 항목 기본값</li>
+      </ul>
+      <div class="highlight"><p>위 데이터는 앱 동작을 위해서만 사용되며, 외부 서버, 클라우드, 또는 제3자에게 절대 전송되지 않습니다.</p></div>
+    </section>
+    <section>
+      <h2>수집하지 않는 정보</h2>
+      <ul>
+        <li>이름, 이메일 등 개인 식별 정보</li>
+        <li>위치 정보</li>
+        <li>기기 식별자 (IDFA 등)</li>
+        <li>사용 패턴 또는 분석 데이터</li>
+        <li>광고 관련 정보</li>
+      </ul>
+    </section>
+    <section>
+      <h2>데이터 저장 및 보안</h2>
+      <p>모든 데이터는 macOS의 표준 UserDefaults를 통해 사용자의 기기에만 저장됩니다. 앱을 삭제하면 모든 데이터가 함께 삭제됩니다.</p>
+    </section>
+    <section>
+      <h2>제3자 서비스</h2>
+      <p>SalaryClock은 광고 네트워크, 분석 도구, 외부 API 등 어떠한 제3자 서비스도 사용하지 않습니다.</p>
+    </section>
+    <section>
+      <h2>알림</h2>
+      <p>퇴근 시간 알림 기능 사용 시 macOS 로컬 알림 권한을 요청합니다. 이 알림은 기기 내에서만 처리되며, 외부 서버를 통하지 않습니다.</p>
+    </section>
+    <section>
+      <h2>개인정보 처리방침 변경</h2>
+      <p>본 방침이 변경될 경우 앱 업데이트를 통해 공지합니다. 변경된 방침은 업데이트 이후 적용됩니다.</p>
+    </section>
+    <section>
+      <h2>문의</h2>
+      <p>개인정보 처리방침에 관한 문의는 아래로 연락해주세요.</p>
+      <div class="contact-box">
+        <p style="color:var(--text-secondary);font-size:13px;margin-bottom:8px;">개발자</p>
+        <a href="mailto:nemestar@gmail.com">nemestar@gmail.com</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- English -->
+  <div class="lang-content active" id="lang-en">
+    <div class="header">
+      <div class="app-badge">📄 Privacy Policy</div>
+      <h1>SalaryClock<br><span>does not collect</span><br>your data</h1>
+      <div class="meta">Last updated: May 18, 2026 · Version 1.0</div>
+    </div>
+    <div class="summary-box">
+      <p><strong>TL;DR:</strong> SalaryClock stores all data locally on your device only. Nothing is sent to external servers or shared with third parties.</p>
+    </div>
+    <section>
+      <h2>Information We Store</h2>
+      <p>SalaryClock stores the following information locally on your device via macOS UserDefaults.</p>
+      <ul>
+        <li>Annual salary or hourly rate (user input)</li>
+        <li>Work start and end time settings</li>
+        <li>Work days per week setting</li>
+        <li>Menu bar display preferences</li>
+        <li>Default expense amounts</li>
+      </ul>
+      <div class="highlight"><p>This data is used solely for app functionality and is never transmitted to external servers, cloud services, or third parties.</p></div>
+    </section>
+    <section>
+      <h2>Information We Do Not Collect</h2>
+      <ul>
+        <li>Personal identifiers (name, email, etc.)</li>
+        <li>Location data</li>
+        <li>Device identifiers (IDFA, etc.)</li>
+        <li>Usage analytics or behavioral data</li>
+        <li>Advertising data</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Data Storage &amp; Security</h2>
+      <p>All data is stored exclusively on your device using macOS standard UserDefaults. Uninstalling the app removes all associated data.</p>
+    </section>
+    <section>
+      <h2>Third-Party Services</h2>
+      <p>SalaryClock does not use any third-party services, including advertising networks, analytics tools, or external APIs.</p>
+    </section>
+    <section>
+      <h2>Notifications</h2>
+      <p>SalaryClock may request permission to send local notifications for end-of-workday alerts. These notifications are processed entirely on your device and do not involve any external servers.</p>
+    </section>
+    <section>
+      <h2>Changes to This Policy</h2>
+      <p>Any changes to this privacy policy will be communicated through app updates. Updated policies take effect upon installation of the update.</p>
+    </section>
+    <section>
+      <h2>Contact</h2>
+      <p>For any questions regarding this privacy policy, please contact us.</p>
+      <div class="contact-box">
+        <p style="color:var(--text-secondary);font-size:13px;margin-bottom:8px;">Developer</p>
+        <a href="mailto:nemestar@gmail.com">nemestar@gmail.com</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="lang-content" id="lang-ja">
+    <div class="header">
+      <div class="app-badge">📄 プライバシーポリシー</div>
+      <h1>SalaryClockは<br><span>あなたのデータを</span><br>収集しません</h1>
+      <div class="meta">最終更新: 2026年5月18日 · バージョン 1.0</div>
+    </div>
+    <div class="summary-box">
+      <p><strong>要約:</strong> SalaryClockはすべてのデータをお使いのデバイス内にのみ保存します。外部サーバーへの送信や第三者との共有は一切行いません。</p>
+    </div>
+    <section>
+      <h2>保存する情報</h2>
+      <p>SalaryClockは以下の情報をmacOSのUserDefaultsを通じてデバイス内にローカル保存します。</p>
+      <ul>
+        <li>年収または時給（ユーザー入力値）</li>
+        <li>出勤・退勤時間の設定</li>
+        <li>週の勤務日数の設定</li>
+        <li>メニューバー表示設定</li>
+        <li>支出項目のデフォルト金額</li>
+      </ul>
+      <div class="highlight"><p>上記データはアプリの動作のみに使用され、外部サーバー、クラウド、または第三者に送信されることは一切ありません。</p></div>
+    </section>
+    <section>
+      <h2>収集しない情報</h2>
+      <ul>
+        <li>氏名・メールアドレス等の個人識別情報</li>
+        <li>位置情報</li>
+        <li>デバイス識別子（IDFA等）</li>
+        <li>利用パターンや分析データ</li>
+        <li>広告関連情報</li>
+      </ul>
+    </section>
+    <section>
+      <h2>データの保存とセキュリティ</h2>
+      <p>すべてのデータはmacOSの標準UserDefaultsを通じてお使いのデバイスにのみ保存されます。アプリを削除すると、すべてのデータが削除されます。</p>
+    </section>
+    <section>
+      <h2>第三者サービス</h2>
+      <p>SalaryClockは広告ネットワーク、分析ツール、外部APIなど、いかなる第三者サービスも使用していません。</p>
+    </section>
+    <section>
+      <h2>通知</h2>
+      <p>退勤時間の通知機能を使用する場合、macOSのローカル通知権限を要求します。この通知はデバイス内でのみ処理され、外部サーバーを経由しません。</p>
+    </section>
+    <section>
+      <h2>ポリシーの変更</h2>
+      <p>本ポリシーが変更される場合は、アプリのアップデートを通じてお知らせします。変更されたポリシーはアップデート後に適用されます。</p>
+    </section>
+    <section>
+      <h2>お問い合わせ</h2>
+      <p>プライバシーポリシーに関するご質問は、以下までご連絡ください。</p>
+      <div class="contact-box">
+        <p style="color:var(--text-secondary);font-size:13px;margin-bottom:8px;">開発者</p>
+        <a href="mailto:nemestar@gmail.com">nemestar@gmail.com</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="footer">
+    © 2026 ghost3d · SalaryClock.MenuBar · com.ghost3d.SalaryClock
+  </div>
+
+</div>
+
+<script>
+function setLang(lang, btn) {
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('lang-' + lang).classList.add('active');
+  btn.classList.add('active');
+  document.documentElement.lang = lang;
+}
+</script>
+</body>
+</html>
