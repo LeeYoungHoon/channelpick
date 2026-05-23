@@ -350,7 +350,7 @@
 
   async function loadIcon(appId, imgId, phId) {
     try {
-      const res = await fetch(`https://itunes.apple.com/lookup?id=${appId}&country=kr`);
+      const res = await fetch(`https://itunes.apple.com/lookup?id=${appId}`);
       const data = await res.json();
       if (data.results && data.results[0]) {
         const iconUrl = data.results[0].artworkUrl512 || data.results[0].artworkUrl100;
