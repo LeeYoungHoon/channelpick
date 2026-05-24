@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>채널픽 개인정보처리방침</title>
+  <title>채널픽 개인정보처리방침 / チャンネルピック プライバシーポリシー</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -12,6 +12,36 @@
       background: #ffffff;
       color: #37352f;
       line-height: 1.7;
+    }
+
+    /* 언어 전환 버튼 */
+    .lang-switcher {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 100;
+      display: flex;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid #e9e9e7;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .lang-btn {
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: #9b9a97;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: #FF4B4B;
+      color: white;
     }
 
     .cover {
@@ -113,7 +143,6 @@
       flex-shrink: 0;
     }
 
-    /* Google 전용 섹션 강조 */
     .section-google .section-title {
       border-bottom-color: #4285F4;
     }
@@ -188,7 +217,6 @@
       border-bottom: none;
     }
 
-    /* Google 테이블 헤더 */
     .table-google thead tr {
       background: #EEF3FF;
     }
@@ -295,277 +323,359 @@
       color: #9b9a97;
     }
 
+    /* 언어별 콘텐츠 */
+    .lang-ko, .lang-ja { display: none; }
+    body.ko .lang-ko { display: block; }
+    body.ja .lang-ja { display: block; }
+    .cover-title-ko, .cover-title-ja { display: none; }
+    body.ko .cover-title-ko { display: block; }
+    body.ja .cover-title-ja { display: block; }
+
     @media (max-width: 480px) {
       .cover h1 { font-size: 24px; }
       .meta { flex-direction: column; gap: 12px; }
       .container { padding: 32px 16px 60px; }
+      .lang-switcher { top: 12px; right: 12px; }
     }
   </style>
 </head>
-<body>
+<body class="ko">
+
+<!-- 언어 전환 버튼 -->
+<div class="lang-switcher">
+  <button class="lang-btn active" onclick="setLang('ko')">한국어</button>
+  <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+</div>
 
 <div class="cover">
   <div class="cover-icon">
     <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
   </div>
-  <h1>개인정보처리방침</h1>
+  <h1 class="cover-title-ko">개인정보처리방침</h1>
+  <h1 class="cover-title-ja">プライバシーポリシー</h1>
   <p>채널픽 (ChannelPick)</p>
 </div>
 
 <div class="container">
 
-  <div class="meta">
-    <div class="meta-item">
-      <span class="meta-label">시행일</span>
-      <span class="meta-value">2026년 5월 6일</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">앱 이름</span>
-      <span class="meta-value">채널픽</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">운영자</span>
-      <span class="meta-value">YoungHoon Lee</span>
-    </div>
-  </div>
+  <!-- 한국어 -->
+  <div class="lang-ko">
 
-  <!-- 섹션 1: 수집하는 개인정보 항목 (보강) -->
-  <div class="section">
-    <div class="section-title">
-      <span class="section-num">1</span>
-      수집하는 개인정보 항목
-    </div>
-    <p>채널픽은 서비스 제공을 위해 아래와 같은 정보를 수집합니다. Google 계정 및 YouTube 데이터는 사용자의 명시적 동의 후에만 접근하며, 서비스 제공에 필요한 최소한의 범위로 제한됩니다.</p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>항목</th>
-            <th>수집 내용</th>
-            <th>수집 시점</th>
-            <th>저장 여부</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Google 계정 정보</td>
-            <td>이메일 주소, 프로필 이름</td>
-            <td>Google 로그인 시</td>
-            <td>서버 저장 (회원 식별용)</td>
-          </tr>
-          <tr>
-            <td>YouTube 구독 목록</td>
-            <td>구독 채널 ID, 채널명, 썸네일</td>
-            <td>YouTube 연동 시 (동의 후)</td>
-            <td>서버 미저장 (선택 후 즉시 폐기)</td>
-          </tr>
-          <tr>
-            <td>앱 이용 기록</td>
-            <td>채널 등록/추천 내역</td>
-            <td>서비스 이용 시</td>
-            <td>서버 저장</td>
-          </tr>
-          <tr>
-            <td>기기 식별자</td>
-            <td>광고 식별자 (IDFA)</td>
-            <td>광고 노출 시</td>
-            <td>AdMob 처리 (앱 서버 미저장)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- 섹션 2: 개인정보 수집 목적 (보강) -->
-  <div class="section">
-    <div class="section-title">
-      <span class="section-num">2</span>
-      개인정보 수집 목적
-    </div>
-    <ul class="list">
-      <li><strong>Google 계정 (이메일, 프로필):</strong> 회원 식별 및 로그인 인증 목적으로만 사용되며, 마케팅·광고 타겟팅에 활용되지 않습니다.</li>
-      <li><strong>YouTube 구독 목록:</strong> 사용자가 직접 채널을 선택해 앱에 등록할 수 있도록 목록을 표시하는 용도로만 사용됩니다. 선택 완료 후 해당 데이터는 즉시 폐기됩니다.</li>
-      <li>서비스 이용 기록 관리 및 부정 이용 방지</li>
-      <li>Google AdMob을 통한 맞춤 광고 제공</li>
-    </ul>
-  </div>
-
-  <!-- 섹션 3: 개인정보 보유 및 이용 기간 -->
-  <div class="section">
-    <div class="section-title">
-      <span class="section-num">3</span>
-      개인정보 보유 및 이용 기간
-    </div>
-    <ul class="list">
-      <li>서비스 탈퇴 시 즉시 삭제</li>
-      <li>관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관</li>
-      <li>YouTube 구독 목록은 채널 선택 목적으로만 사용되며 서버에 영구 저장되지 않음</li>
-    </ul>
-  </div>
-
-  <!-- 섹션 4: 제3자 제공 및 연동 서비스 -->
-  <div class="section">
-    <div class="section-title">
-      <span class="section-num">4</span>
-      제3자 제공 및 연동 서비스
-    </div>
-    <p>앱은 이용자의 개인정보를 외부에 판매하거나 제공하지 않습니다. 단, 아래 서비스와 기능 제공을 위해 연동됩니다.</p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>서비스</th>
-            <th>목적</th>
-            <th>처리 항목</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Google OAuth 2.0</td>
-            <td>로그인 인증</td>
-            <td><span class="tag">이메일</span><span class="tag">프로필</span></td>
-          </tr>
-          <tr>
-            <td>YouTube Data API</td>
-            <td>구독 채널 조회</td>
-            <td><span class="tag">구독 목록</span></td>
-          </tr>
-          <tr>
-            <td>Supabase</td>
-            <td>데이터 저장</td>
-            <td><span class="tag">채널 등록 정보</span></td>
-          </tr>
-          <tr>
-            <td>Google AdMob</td>
-            <td>광고 제공</td>
-            <td><span class="tag">기기 식별자</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- 섹션 5: Google 사용자 데이터 처리 방침 (신규 추가) -->
-  <div class="section section-google">
-    <div class="section-title">
-      <span class="section-num">5</span>
-      Google 사용자 데이터 처리 방침
-    </div>
-
-    <div class="google-notice">
-      <svg class="google-notice-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="10" stroke="#4285F4" stroke-width="2"/>
-        <path d="M12 8v4M12 16h.01" stroke="#4285F4" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-      <p>본 섹션은 Google API Services User Data Policy 및 Google APIs Terms of Service 준수를 위해 Google 사용자 데이터의 접근·사용·저장·공유 방식을 명시합니다.</p>
-    </div>
-
-    <p><strong>접근하는 Google 데이터 범위 (OAuth Scope)</strong></p>
-    <div class="table-wrap">
-      <table class="table-google">
-        <thead>
-          <tr>
-            <th>OAuth Scope</th>
-            <th>접근 데이터</th>
-            <th>사용 목적</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>openid</code>, <code>profile</code>, <code>email</code></td>
-            <td>Google 계정 이메일, 프로필 이름</td>
-            <td>회원 식별 및 로그인 인증</td>
-          </tr>
-          <tr>
-            <td><code>youtube.readonly</code></td>
-            <td>YouTube 구독 채널 목록 (읽기 전용)</td>
-            <td>채널 등록 화면에서 구독 목록 표시</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <br>
-    <p><strong>데이터 사용 방식</strong></p>
-    <ul class="list list-blue">
-      <li>Google 계정 정보(이메일, 프로필)는 회원 식별 및 로그인 인증 목적으로만 사용되며, 앱 서버(Supabase)에 저장됩니다.</li>
-      <li>YouTube 구독 목록은 사용자가 등록할 채널을 선택하는 화면에서만 일시적으로 사용됩니다. 선택 완료 즉시 메모리에서 삭제되며, 앱 서버에 저장되지 않습니다.</li>
-      <li>Google 데이터는 광고 타겟팅, 프로파일링, 제3자 제공 등의 목적으로 사용되지 않습니다.</li>
-      <li>앱은 Google 데이터를 서비스 제공에 필요한 최소한의 범위로만 요청하며(최소 권한 원칙), 불필요한 데이터는 수집하지 않습니다.</li>
-    </ul>
-
-    <br>
-    <p><strong>데이터 저장 및 보안</strong></p>
-    <ul class="list list-blue">
-      <li>저장되는 Google 데이터(이메일, 프로필)는 Supabase(Northeast Asia 리전) 서버에 암호화되어 보관됩니다.</li>
-      <li>YouTube 구독 목록은 앱 서버에 저장되지 않으며, 네트워크 전송 시에도 HTTPS를 통해 암호화됩니다.</li>
-      <li>회원 탈퇴 시 저장된 모든 Google 관련 데이터는 즉시 삭제됩니다.</li>
-    </ul>
-
-    <br>
-    <p><strong>데이터 공유 제한</strong></p>
-    <ul class="list list-blue">
-      <li>Google을 통해 수집된 사용자 데이터는 제3자에게 판매, 임대, 공유되지 않습니다.</li>
-      <li>Google 데이터는 앱 서비스 제공 목적 이외에 사용되지 않으며, 인간이 직접 열람하지 않습니다(단, 사용자 요청 또는 법적 의무가 있는 경우 제외).</li>
-      <li>본 앱은 Google API Services User Data Policy의 Limited Use 요건을 준수합니다.</li>
-    </ul>
-
-    <br>
-    <p><strong>접근 권한 철회</strong></p>
-    <ul class="list list-blue">
-      <li>사용자는 언제든지 <a href="https://myaccount.google.com/permissions" style="color:#4285F4;">Google 계정 설정 → 앱 권한</a>에서 채널픽의 YouTube 데이터 접근 권한을 철회할 수 있습니다.</li>
-      <li>권한 철회 시 YouTube 구독 목록 가져오기 기능은 사용할 수 없으나, 앱의 다른 기능은 정상적으로 이용 가능합니다.</li>
-    </ul>
-  </div>
-
-  <!-- 섹션 6: 광고 식별자 사용 -->
-  <div class="section">
-    <div class="section-title">
-      <span class="section-num">6</span>
-      광고 식별자 사용
-    </div>
-    <p>앱은 Google AdMob을 통해 맞춤 광고를 제공하며, 이 과정에서 기기 광고 식별자(IDFA)가 사용될 수 있습니다.</p>
-    <ul class="list">
-      <li>iOS 설정 → 개인 정보 보호 → 추적 → 앱이 추적을 요청하도록 허용에서 변경 가능</li>
-      <li>추적 거부 시에도 앱의 모든 기능을 정상적으로 이용할 수 있습니다</li>
-    </ul>
-  </div>
-
-  <!-- 섹션 7: 이용자의 권리 -->
-  <div class="section">
-    <div class="section-title">
-      <span class="section-num">7</span>
-      이용자의 권리
-    </div>
-    <ul class="list">
-      <li>개인정보 열람, 수정, 삭제 요청 가능</li>
-      <li>앱 내 연동 해제 기능을 통해 언제든지 서비스 탈퇴 가능</li>
-      <li>Google 계정 설정에서 YouTube 데이터 접근 권한 언제든지 철회 가능</li>
-    </ul>
-  </div>
-
-  <!-- 섹션 8: 개인정보 보호책임자 -->
-  <div class="section">
-    <div class="section-title">
-      <span class="section-num">8</span>
-      개인정보 보호책임자
-    </div>
-    <div class="contact-card">
-      <div class="contact-icon">
-        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    <div class="meta">
+      <div class="meta-item">
+        <span class="meta-label">시행일</span>
+        <span class="meta-value">2026년 5월 6일</span>
       </div>
-      <div class="contact-info">
-        <span class="contact-label">개인정보 관련 문의</span>
-        <a href="mailto:nemestar@gmail.com" class="contact-email">nemestar@gmail.com</a>
+      <div class="meta-item">
+        <span class="meta-label">앱 이름</span>
+        <span class="meta-value">채널픽</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">운영자</span>
+        <span class="meta-value">YoungHoon Lee</span>
       </div>
     </div>
-  </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">1</span>수집하는 개인정보 항목</div>
+      <p>채널픽은 서비스 제공을 위해 아래와 같은 정보를 수집합니다. Google 계정 및 YouTube 데이터는 사용자의 명시적 동의 후에만 접근하며, 서비스 제공에 필요한 최소한의 범위로 제한됩니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>항목</th><th>수집 내용</th><th>수집 시점</th><th>저장 여부</th></tr></thead>
+          <tbody>
+            <tr><td>Google 계정 정보</td><td>이메일 주소, 프로필 이름</td><td>Google 로그인 시</td><td>서버 저장 (회원 식별용)</td></tr>
+            <tr><td>YouTube 구독 목록</td><td>구독 채널 ID, 채널명, 썸네일</td><td>YouTube 연동 시 (동의 후)</td><td>서버 미저장 (선택 후 즉시 폐기)</td></tr>
+            <tr><td>앱 이용 기록</td><td>채널 등록/추천 내역</td><td>서비스 이용 시</td><td>서버 저장</td></tr>
+            <tr><td>기기 식별자</td><td>광고 식별자 (IDFA)</td><td>광고 노출 시</td><td>AdMob 처리 (앱 서버 미저장)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">2</span>개인정보 수집 목적</div>
+      <ul class="list">
+        <li><strong>Google 계정 (이메일, 프로필):</strong> 회원 식별 및 로그인 인증 목적으로만 사용되며, 마케팅·광고 타겟팅에 활용되지 않습니다.</li>
+        <li><strong>YouTube 구독 목록:</strong> 사용자가 직접 채널을 선택해 앱에 등록할 수 있도록 목록을 표시하는 용도로만 사용됩니다. 선택 완료 후 해당 데이터는 즉시 폐기됩니다.</li>
+        <li>서비스 이용 기록 관리 및 부정 이용 방지</li>
+        <li>Google AdMob을 통한 맞춤 광고 제공</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">3</span>개인정보 보유 및 이용 기간</div>
+      <ul class="list">
+        <li>서비스 탈퇴 시 즉시 삭제</li>
+        <li>관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관</li>
+        <li>YouTube 구독 목록은 채널 선택 목적으로만 사용되며 서버에 영구 저장되지 않음</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">4</span>제3자 제공 및 연동 서비스</div>
+      <p>앱은 이용자의 개인정보를 외부에 판매하거나 제공하지 않습니다. 단, 아래 서비스와 기능 제공을 위해 연동됩니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>서비스</th><th>목적</th><th>처리 항목</th></tr></thead>
+          <tbody>
+            <tr><td>Google OAuth 2.0</td><td>로그인 인증</td><td><span class="tag">이메일</span><span class="tag">프로필</span></td></tr>
+            <tr><td>YouTube Data API</td><td>구독 채널 조회</td><td><span class="tag">구독 목록</span></td></tr>
+            <tr><td>Supabase</td><td>데이터 저장</td><td><span class="tag">채널 등록 정보</span></td></tr>
+            <tr><td>Google AdMob</td><td>광고 제공</td><td><span class="tag">기기 식별자</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section section-google">
+      <div class="section-title"><span class="section-num">5</span>Google 사용자 데이터 처리 방침</div>
+      <div class="google-notice">
+        <svg class="google-notice-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#4285F4" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#4285F4" stroke-width="2" stroke-linecap="round"/></svg>
+        <p>본 섹션은 Google API Services User Data Policy 및 Google APIs Terms of Service 준수를 위해 Google 사용자 데이터의 접근·사용·저장·공유 방식을 명시합니다.</p>
+      </div>
+      <p><strong>접근하는 Google 데이터 범위 (OAuth Scope)</strong></p>
+      <div class="table-wrap">
+        <table class="table-google">
+          <thead><tr><th>OAuth Scope</th><th>접근 데이터</th><th>사용 목적</th></tr></thead>
+          <tbody>
+            <tr><td><code>openid</code>, <code>profile</code>, <code>email</code></td><td>Google 계정 이메일, 프로필 이름</td><td>회원 식별 및 로그인 인증</td></tr>
+            <tr><td><code>youtube.readonly</code></td><td>YouTube 구독 채널 목록 (읽기 전용)</td><td>채널 등록 화면에서 구독 목록 표시</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <p><strong>데이터 사용 방식</strong></p>
+      <ul class="list list-blue">
+        <li>Google 계정 정보(이메일, 프로필)는 회원 식별 및 로그인 인증 목적으로만 사용되며, 앱 서버(Supabase)에 저장됩니다.</li>
+        <li>YouTube 구독 목록은 사용자가 등록할 채널을 선택하는 화면에서만 일시적으로 사용됩니다. 선택 완료 즉시 메모리에서 삭제되며, 앱 서버에 저장되지 않습니다.</li>
+        <li>Google 데이터는 광고 타겟팅, 프로파일링, 제3자 제공 등의 목적으로 사용되지 않습니다.</li>
+        <li>앱은 Google 데이터를 서비스 제공에 필요한 최소한의 범위로만 요청하며(최소 권한 원칙), 불필요한 데이터는 수집하지 않습니다.</li>
+      </ul>
+      <br>
+      <p><strong>데이터 저장 및 보안</strong></p>
+      <ul class="list list-blue">
+        <li>저장되는 Google 데이터(이메일, 프로필)는 Supabase(Northeast Asia 리전) 서버에 암호화되어 보관됩니다.</li>
+        <li>YouTube 구독 목록은 앱 서버에 저장되지 않으며, 네트워크 전송 시에도 HTTPS를 통해 암호화됩니다.</li>
+        <li>회원 탈퇴 시 저장된 모든 Google 관련 데이터는 즉시 삭제됩니다.</li>
+      </ul>
+      <br>
+      <p><strong>데이터 공유 제한</strong></p>
+      <ul class="list list-blue">
+        <li>Google을 통해 수집된 사용자 데이터는 제3자에게 판매, 임대, 공유되지 않습니다.</li>
+        <li>Google 데이터는 앱 서비스 제공 목적 이외에 사용되지 않으며, 인간이 직접 열람하지 않습니다(단, 사용자 요청 또는 법적 의무가 있는 경우 제외).</li>
+        <li>본 앱은 Google API Services User Data Policy의 Limited Use 요건을 준수합니다.</li>
+      </ul>
+      <br>
+      <p><strong>접근 권한 철회</strong></p>
+      <ul class="list list-blue">
+        <li>사용자는 언제든지 <a href="https://myaccount.google.com/permissions" style="color:#4285F4;">Google 계정 설정 → 앱 권한</a>에서 채널픽의 YouTube 데이터 접근 권한을 철회할 수 있습니다.</li>
+        <li>권한 철회 시 YouTube 구독 목록 가져오기 기능은 사용할 수 없으나, 앱의 다른 기능은 정상적으로 이용 가능합니다.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">6</span>광고 식별자 사용</div>
+      <p>앱은 Google AdMob을 통해 맞춤 광고를 제공하며, 이 과정에서 기기 광고 식별자(IDFA)가 사용될 수 있습니다.</p>
+      <ul class="list">
+        <li>iOS 설정 → 개인 정보 보호 → 추적 → 앱이 추적을 요청하도록 허용에서 변경 가능</li>
+        <li>추적 거부 시에도 앱의 모든 기능을 정상적으로 이용할 수 있습니다</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">7</span>이용자의 권리</div>
+      <ul class="list">
+        <li>개인정보 열람, 수정, 삭제 요청 가능</li>
+        <li>앱 내 연동 해제 기능을 통해 언제든지 서비스 탈퇴 가능</li>
+        <li>Google 계정 설정에서 YouTube 데이터 접근 권한 언제든지 철회 가능</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">8</span>개인정보 보호책임자</div>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div class="contact-info">
+          <span class="contact-label">개인정보 관련 문의</span>
+          <a href="mailto:nemestar@gmail.com" class="contact-email">nemestar@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /lang-ko -->
+
+  <!-- 일본어 -->
+  <div class="lang-ja">
+
+    <div class="meta">
+      <div class="meta-item">
+        <span class="meta-label">施行日</span>
+        <span class="meta-value">2026年5月6日</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">アプリ名</span>
+        <span class="meta-value">チャンネルピック</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">運営者</span>
+        <span class="meta-value">YoungHoon Lee</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">1</span>収集する個人情報の項目</div>
+      <p>チャンネルピックは、サービス提供のために以下の情報を収集します。GoogleアカウントおよびYouTubeデータは、ユーザーの明示的な同意を得た上でのみアクセスし、サービス提供に必要な最小限の範囲に限定されます。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>項目</th><th>収集内容</th><th>収集時点</th><th>保存の有無</th></tr></thead>
+          <tbody>
+            <tr><td>Googleアカウント情報</td><td>メールアドレス、プロフィール名</td><td>Googleログイン時</td><td>サーバー保存（会員識別用）</td></tr>
+            <tr><td>YouTubeチャンネル登録リスト</td><td>登録チャンネルID、チャンネル名、サムネイル</td><td>YouTube連携時（同意後）</td><td>サーバー未保存（選択後即時廃棄）</td></tr>
+            <tr><td>アプリ利用記録</td><td>チャンネル登録・おすすめ履歴</td><td>サービス利用時</td><td>サーバー保存</td></tr>
+            <tr><td>端末識別子</td><td>広告識別子（IDFA）</td><td>広告表示時</td><td>AdMob処理（アプリサーバー未保存）</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">2</span>個人情報の収集目的</div>
+      <ul class="list">
+        <li><strong>Googleアカウント（メール、プロフィール）:</strong> 会員識別およびログイン認証の目的のみに使用され、マーケティング・広告ターゲティングには利用されません。</li>
+        <li><strong>YouTubeチャンネル登録リスト:</strong> ユーザーが直接チャンネルを選択してアプリに登録できるよう、リストを表示する用途のみに使用されます。選択完了後、該当データは即時廃棄されます。</li>
+        <li>サービス利用記録の管理および不正利用の防止</li>
+        <li>Google AdMobを通じたパーソナライズ広告の提供</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">3</span>個人情報の保有および利用期間</div>
+      <ul class="list">
+        <li>サービス退会時に即時削除</li>
+        <li>関連法令により保存が必要な場合は、該当期間中保管</li>
+        <li>YouTubeチャンネル登録リストはチャンネル選択の目的のみに使用され、サーバーに永久保存されません</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">4</span>第三者提供および連携サービス</div>
+      <p>アプリはユーザーの個人情報を外部に販売または提供しません。ただし、以下のサービスと機能提供のために連携しています。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>サービス</th><th>目的</th><th>処理項目</th></tr></thead>
+          <tbody>
+            <tr><td>Google OAuth 2.0</td><td>ログイン認証</td><td><span class="tag">メール</span><span class="tag">プロフィール</span></td></tr>
+            <tr><td>YouTube Data API</td><td>登録チャンネル照会</td><td><span class="tag">登録リスト</span></td></tr>
+            <tr><td>Supabase</td><td>データ保存</td><td><span class="tag">チャンネル登録情報</span></td></tr>
+            <tr><td>Google AdMob</td><td>広告提供</td><td><span class="tag">端末識別子</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section section-google">
+      <div class="section-title"><span class="section-num">5</span>Googleユーザーデータの取り扱い方針</div>
+      <div class="google-notice">
+        <svg class="google-notice-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#4285F4" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#4285F4" stroke-width="2" stroke-linecap="round"/></svg>
+        <p>本セクションは、Google API Services User Data PolicyおよびGoogle APIs Terms of Serviceに準拠するため、Googleユーザーデータへのアクセス・使用・保存・共有の方法を明示します。</p>
+      </div>
+      <p><strong>アクセスするGoogleデータの範囲（OAuth Scope）</strong></p>
+      <div class="table-wrap">
+        <table class="table-google">
+          <thead><tr><th>OAuth Scope</th><th>アクセスデータ</th><th>使用目的</th></tr></thead>
+          <tbody>
+            <tr><td><code>openid</code>, <code>profile</code>, <code>email</code></td><td>Googleアカウントのメール、プロフィール名</td><td>会員識別およびログイン認証</td></tr>
+            <tr><td><code>youtube.readonly</code></td><td>YouTubeチャンネル登録リスト（読み取り専用）</td><td>チャンネル登録画面での登録リスト表示</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <p><strong>データの使用方法</strong></p>
+      <ul class="list list-blue">
+        <li>Googleアカウント情報（メール、プロフィール）は、会員識別およびログイン認証の目的のみに使用され、アプリサーバー（Supabase）に保存されます。</li>
+        <li>YouTubeチャンネル登録リストは、ユーザーが登録するチャンネルを選択する画面でのみ一時的に使用されます。選択完了後、即座にメモリから削除され、アプリサーバーには保存されません。</li>
+        <li>Googleデータは、広告ターゲティング、プロファイリング、第三者提供等の目的には使用されません。</li>
+        <li>アプリはGoogleデータをサービス提供に必要な最小限の範囲のみリクエストし（最小権限の原則）、不要なデータは収集しません。</li>
+      </ul>
+      <br>
+      <p><strong>データの保存およびセキュリティ</strong></p>
+      <ul class="list list-blue">
+        <li>保存されるGoogleデータ（メール、プロフィール）は、Supabase（Northeast Asiaリージョン）サーバーに暗号化されて保管されます。</li>
+        <li>YouTubeチャンネル登録リストはアプリサーバーに保存されず、ネットワーク転送時もHTTPSにより暗号化されます。</li>
+        <li>退会時、保存されているすべてのGoogle関連データは即時削除されます。</li>
+      </ul>
+      <br>
+      <p><strong>データ共有の制限</strong></p>
+      <ul class="list list-blue">
+        <li>Googleを通じて収集したユーザーデータは、第三者に販売、貸与、共有されません。</li>
+        <li>Googleデータはアプリサービス提供目的以外には使用されず、人間が直接閲覧することはありません（ただし、ユーザーの要求または法的義務がある場合を除く）。</li>
+        <li>本アプリはGoogle API Services User Data PolicyのLimited Use要件に準拠しています。</li>
+      </ul>
+      <br>
+      <p><strong>アクセス権限の撤回</strong></p>
+      <ul class="list list-blue">
+        <li>ユーザーはいつでも<a href="https://myaccount.google.com/permissions" style="color:#4285F4;">Googleアカウント設定 → アプリの権限</a>から、チャンネルピックのYouTubeデータアクセス権限を撤回できます。</li>
+        <li>権限撤回後、YouTubeチャンネル登録リストの取得機能は使用できなくなりますが、アプリの他の機能は正常にご利用いただけます。</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">6</span>広告識別子の使用</div>
+      <p>アプリはGoogle AdMobを通じてパーソナライズ広告を提供しており、この過程で端末の広告識別子（IDFA）が使用される場合があります。</p>
+      <ul class="list">
+        <li>iOSの設定 → プライバシーとセキュリティ → トラッキング → アプリのトラッキング要求を許可で変更可能</li>
+        <li>トラッキングを拒否した場合でも、アプリのすべての機能を正常にご利用いただけます</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">7</span>ユーザーの権利</div>
+      <ul class="list">
+        <li>個人情報の閲覧、修正、削除のリクエストが可能</li>
+        <li>アプリ内の連携解除機能からいつでもサービスの退会が可能</li>
+        <li>Googleアカウント設定からYouTubeデータのアクセス権限をいつでも撤回可能</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="section-num">8</span>個人情報保護責任者</div>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div class="contact-info">
+          <span class="contact-label">個人情報に関するお問い合わせ</span>
+          <a href="mailto:nemestar@gmail.com" class="contact-email">nemestar@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /lang-ja -->
 
 </div>
 
 <div class="footer">
-  © 2026 채널픽 · 본 방침은 2026년 5월 6일부터 시행됩니다
+  <span class="lang-ko">© 2026 채널픽 · 본 방침은 2026년 5월 6일부터 시행됩니다</span>
+  <span class="lang-ja">© 2026 チャンネルピック · 本ポリシーは2026年5月6日より施行されます</span>
 </div>
+
+<script>
+  function setLang(lang) {
+    document.body.className = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === (lang === 'ko' ? '한국어' : '日本語'));
+    });
+    document.documentElement.lang = lang;
+  }
+
+  // 브라우저 언어 자동 감지 (기본값 한국어)
+  const browserLang = navigator.language || navigator.userLanguage;
+  if (browserLang.startsWith('ja')) {
+    setLang('ja');
+  }
+</script>
 
 </body>
 </html>
