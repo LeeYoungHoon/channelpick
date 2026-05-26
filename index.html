@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Fruit Lab(사과공장) — 일상을 더 풍요롭게 만드는 iOS 앱을 만듭니다.">
 <meta property="og:title" content="Fruit Lab · 사과공장">
-<meta property="og:description" content="일상을 더 풍요롭게 만드는 iOS 앱을 만듭니다.">
+<meta property="og:description" content="일상을 더 풍요롭게 만드는 앱을 만듭니다.">
 <meta property="og:type" content="website">
 <title>Fruit Lab · 사과공장</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,10 +137,33 @@
     font-weight: 700; letter-spacing: -1px; color: var(--black); margin-bottom: 12px;
   }
   .apps-sub { font-size: 17px; font-weight: 300; color: var(--gray3); }
+
+  /* 플랫폼 섹션 */
+  .platform-section { max-width: 1080px; margin: 0 auto 64px; }
+  .platform-section:last-child { margin-bottom: 0; }
+  .platform-label {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .platform-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 980px;
+  }
+  .platform-badge-ios {
+    background: rgba(0,113,227,0.1); color: var(--accent);
+  }
+  .platform-badge-mac {
+    background: rgba(30,30,35,0.08); color: #3a3a3c;
+  }
+  .platform-divider {
+    flex: 1; height: 1px; background: var(--gray2);
+  }
+
   .apps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px; max-width: 1080px; margin: 0 auto;
+    gap: 20px;
   }
   .app-card {
     background: var(--white); border-radius: 20px; padding: 40px 36px;
@@ -153,6 +176,18 @@
   .card-channelpick::before { background: linear-gradient(90deg, #FF3B30, #FF6B35); }
   .card-keepgoing::before   { background: linear-gradient(90deg, #E8A838, #f0c060); }
   .card-hanpyo::before      { background: linear-gradient(90deg, #1E40AF, #3b60d0); }
+  .card-porotimer::before   { background: linear-gradient(90deg, #0a1628, #ff6a00); }
+  .card-salaryclock::before { background: linear-gradient(90deg, #0d2137, #34c759); }
+
+  /* SalaryClock 비활성 */
+  .app-card-disabled {
+    opacity: 0.65;
+  }
+  .app-card-disabled:hover {
+    transform: none;
+    box-shadow: none;
+    cursor: default;
+  }
 
   .app-icon-wrap {
     width: 72px; height: 72px; border-radius: 16px;
@@ -168,7 +203,10 @@
   .tag-channelpick { color: #FF3B30; }
   .tag-keepgoing   { color: #E8A838; }
   .tag-hanpyo      { color: #1E40AF; }
+  .tag-porotimer   { color: #0a1628; }
+  .tag-salaryclock { color: #0d2137; }
   .app-desc { font-size: 15px; font-weight: 300; color: var(--gray3); line-height: 1.7; flex: 1; margin-bottom: 32px; }
+
   .app-dl-btn {
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--black); color: #fff;
@@ -178,6 +216,15 @@
   }
   .app-dl-btn:hover { background: #3a3a3c; transform: scale(1.03); }
   .app-dl-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+
+  /* 출시 예정 버튼 */
+  .app-dl-btn-disabled {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gray2); color: var(--gray3);
+    padding: 11px 22px; border-radius: 980px;
+    font-size: 14px; font-weight: 500; width: fit-content;
+    cursor: default; pointer-events: none;
+  }
 
   /* ── CONTACT ── */
   .contact { padding: 120px 24px; text-align: center; background: var(--white); }
@@ -243,7 +290,7 @@
 <section class="hero">
   <p class="hero-eyebrow">Fruit Lab · 사과공장</p>
   <h1>작은 앱,<br><span>큰 가능성</span></h1>
-  <p class="hero-sub">일상을 더 풍요롭게 만드는 iOS 앱을 만듭니다.<br>Simple apps, meaningful experiences.</p>
+  <p class="hero-sub">일상을 더 풍요롭게 만드는 모바일 앱을 만듭니다.<br>Simple apps, meaningful experiences.</p>
   <div class="hero-cta">
     <a href="#apps" class="btn-primary">앱 둘러보기</a>
     <a href="#contact" class="btn-ghost">문의하기</a>
@@ -264,60 +311,108 @@
     <h2 class="apps-headline reveal">만든 앱들</h2>
     <p class="apps-sub reveal">App Store에서 지금 바로 만나보세요</p>
   </div>
-  <div class="apps-grid">
 
-    <!-- 채널픽 -->
-    <div class="app-card card-channelpick reveal">
-      <div class="app-icon-wrap">
-        <img id="icon-channelpick" src="" alt="채널픽 아이콘" style="display:none">
-        <span class="icon-placeholder" id="ph-channelpick">📺</span>
-      </div>
-      <p class="app-name">채널픽</p>
-      <p class="app-tagline tag-channelpick">유튜브 채널 추천 커뮤니티</p>
-      <p class="app-desc">숨겨진 유튜브 채널을 발견하고 공유하세요. 구독자들이 직접 추천하는 채널로 새로운 콘텐츠를 만나보세요.</p>
-      <a class="app-dl-btn" href="https://apps.apple.com/kr/app/%EC%B1%84%EB%84%90%ED%94%BD/id6762537522" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
-        App Store
-      </a>
+  <!-- iOS Apps -->
+  <div class="platform-section reveal">
+    <div class="platform-label">
+      <span class="platform-badge platform-badge-ios">Apps</span>
+      <div class="platform-divider"></div>
     </div>
+    <div class="apps-grid">
 
-    <!-- 오늘도 버팀 -->
-    <div class="app-card card-keepgoing reveal">
-      <div class="app-icon-wrap">
-        <img id="icon-keepgoing" src="" alt="오늘도 버팀 아이콘" style="display:none">
-        <span class="icon-placeholder" id="ph-keepgoing">💙</span>
-      </div>
-      <p class="app-name">오늘도 버팀</p>
-      <p class="app-tagline tag-keepgoing">하루하루 버텨내는 우리를 위해</p>
-      <p class="app-desc">힘든 하루를 보내는 사람들이 서로 응원하고 위로하는 공간입니다. 혼자가 아니라는 것을 느껴보세요.</p>
-      <a class="app-dl-btn" href="https://apps.apple.com/kr/app/%EC%98%A4%EB%8A%98%EB%8F%84-%EB%B2%84%ED%8C%80/id6763959927" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
-        App Store
-      </a>
-    </div>
-
-    <!-- 한표 -->
-    <div class="app-card card-hanpyo reveal">
-      <div class="app-icon-wrap">
-        <img id="icon-hanpyo" src="" alt="한표 아이콘" style="display:none">
-        <span class="icon-placeholder" id="ph-hanpyo">🗳️</span>
-      </div>
-      <p class="app-name">한표 - 민심</p>
-      <p class="app-tagline tag-hanpyo">나의 한 표로 트렌드를 읽다</p>
-      <p class="app-desc">일상의 다양한 주제로 투표하고 실시간 민심을 확인하세요. 성별·연령별 교차분석으로 생생한 여론을 만나보세요.</p>
-      <div style="display:flex; gap:8px; flex-wrap:nowrap;">
-        <a class="app-dl-btn" style="padding:9px 16px; font-size:13px;" href="https://apps.apple.com/kr/app/%ED%95%9C%ED%91%9C-%EB%AF%BC%EC%8B%AC/id6766762438" target="_blank" rel="noopener">
+      <!-- 채널픽 -->
+      <div class="app-card card-channelpick reveal">
+        <div class="app-icon-wrap">
+          <img id="icon-channelpick" src="" alt="채널픽 아이콘" style="display:none">
+          <span class="icon-placeholder" id="ph-channelpick">📺</span>
+        </div>
+        <p class="app-name">채널픽</p>
+        <p class="app-tagline tag-channelpick">유튜브 채널 추천 커뮤니티</p>
+        <p class="app-desc">숨겨진 유튜브 채널을 발견하고 공유하세요. 구독자들이 직접 추천하는 채널로 새로운 콘텐츠를 만나보세요.</p>
+        <a class="app-dl-btn" href="https://apps.apple.com/kr/app/%EC%B1%84%EB%84%90%ED%94%BD/id6762537522" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
           App Store
         </a>
-        <a class="app-dl-btn" style="padding:9px 16px; font-size:13px;" href="https://play.google.com/store/apps/details?id=com.ghost3d.picki" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.65.19.97.07l12.44-7.19-2.79-2.79-10.62 9.91zM.48 1.1C.18 1.42 0 1.92 0 2.57v18.86c0 .65.18 1.15.48 1.47l.08.07 10.56-10.56v-.24L.56 1.03l-.08.07zM20.69 10.28l-2.99-1.73-3.13 3.13 3.13 3.14 3.01-1.74c.86-.49.86-1.3-.02-1.8zM3.18.24l12.44 7.19-2.79 2.79L2.21.31C2.53.19 2.88.21 3.18.38z"/></svg>
-          Google Play
+      </div>
+
+      <!-- 오늘도 버팀 -->
+      <div class="app-card card-keepgoing reveal">
+        <div class="app-icon-wrap">
+          <img id="icon-keepgoing" src="" alt="오늘도 버팀 아이콘" style="display:none">
+          <span class="icon-placeholder" id="ph-keepgoing">💙</span>
+        </div>
+        <p class="app-name">오늘도 버팀</p>
+        <p class="app-tagline tag-keepgoing">하루하루 버텨내는 우리를 위해</p>
+        <p class="app-desc">힘든 하루를 보내는 사람들이 서로 응원하고 위로하는 공간입니다. 혼자가 아니라는 것을 느껴보세요.</p>
+        <a class="app-dl-btn" href="https://apps.apple.com/kr/app/%EC%98%A4%EB%8A%98%EB%8F%84-%EB%B2%84%ED%8C%80/id6763959927" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+          App Store
         </a>
       </div>
-    </div>
 
+      <!-- 한표 -->
+      <div class="app-card card-hanpyo reveal">
+        <div class="app-icon-wrap">
+          <img id="icon-hanpyo" src="" alt="한표 아이콘" style="display:none">
+          <span class="icon-placeholder" id="ph-hanpyo">🗳️</span>
+        </div>
+        <p class="app-name">한표 - 민심</p>
+        <p class="app-tagline tag-hanpyo">나의 한 표로 트렌드를 읽다</p>
+        <p class="app-desc">일상의 다양한 주제로 투표하고 실시간 민심을 확인하세요. 성별·연령별 교차분석으로 생생한 여론을 만나보세요.</p>
+        <div style="display:flex; gap:8px; flex-wrap:nowrap;">
+          <a class="app-dl-btn" style="padding:9px 16px; font-size:13px;" href="https://apps.apple.com/kr/app/%ED%95%9C%ED%91%9C-%EB%AF%BC%EC%8B%AC/id6766762438" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+            App Store
+          </a>
+          <a class="app-dl-btn" style="padding:9px 16px; font-size:13px;" href="https://play.google.com/store/apps/details?id=com.ghost3d.picki" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.65.19.97.07l12.44-7.19-2.79-2.79-10.62 9.91zM.48 1.1C.18 1.42 0 1.92 0 2.57v18.86c0 .65.18 1.15.48 1.47l.08.07 10.56-10.56v-.24L.56 1.03l-.08.07zM20.69 10.28l-2.99-1.73-3.13 3.13 3.13 3.14 3.01-1.74c.86-.49.86-1.3-.02-1.8zM3.18.24l12.44 7.19-2.79 2.79L2.21.31C2.53.19 2.88.21 3.18.38z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  <!-- Mac Apps -->
+  <div class="platform-section reveal">
+    <div class="platform-label">
+      <span class="platform-badge platform-badge-mac">macOS</span>
+      <div class="platform-divider"></div>
+    </div>
+    <div class="apps-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 420px));">
+
+      <!-- PoroTimer -->
+      <div class="app-card card-porotimer reveal">
+        <div class="app-icon-wrap">
+          <img id="icon-porotimer" src="" alt="PoroTimer 아이콘" style="display:none">
+          <span class="icon-placeholder" id="ph-porotimer">🍅</span>
+        </div>
+        <p class="app-name">PoroTimer</p>
+        <p class="app-tagline tag-porotimer">메뉴바 집중 타이머</p>
+        <p class="app-desc">태그 기반 집중 추적으로 나만의 피크타임을 찾아보세요. 포모도로 타이머로 스마트하게 집중하세요.</p>
+        <a class="app-dl-btn" href="https://apps.apple.com/app/id6770058538" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+          Mac App Store
+        </a>
+      </div>
+
+      <!-- SalaryClock -->
+      <div class="app-card card-salaryclock app-card-disabled reveal">
+        <div class="app-icon-wrap">
+          <span class="icon-placeholder">💰</span>
+        </div>
+        <p class="app-name">SalaryClock</p>
+        <p class="app-tagline tag-salaryclock">메뉴바 연봉 시계</p>
+        <p class="app-desc">오늘 내가 번 돈을 실시간으로 확인하세요. 커피·점심 등 지출을 기록하고 순수익을 한눈에 파악하세요.</p>
+        <span class="app-dl-btn-disabled">
+          출시 예정
+        </span>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
 <!-- CONTACT -->
@@ -346,6 +441,7 @@
     { id: '6762537522', imgId: 'icon-channelpick', phId: 'ph-channelpick' },
     { id: '6763959927', imgId: 'icon-keepgoing',   phId: 'ph-keepgoing'   },
     { id: '6766762438', imgId: 'icon-hanpyo',       phId: 'ph-hanpyo'     },
+    { id: '6770058538', imgId: 'icon-porotimer',    phId: 'ph-porotimer'  },
   ];
 
   async function loadIcon(appId, imgId, phId) {
