@@ -138,7 +138,6 @@
   }
   .apps-sub { font-size: 17px; font-weight: 300; color: var(--gray3); }
 
-  /* 플랫폼 섹션 */
   .platform-section { max-width: 1080px; margin: 0 auto 64px; }
   .platform-section:last-child { margin-bottom: 0; }
   .platform-label {
@@ -150,15 +149,9 @@
     font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
     text-transform: none; padding: 4px 12px; border-radius: 980px;
   }
-  .platform-badge-ios {
-    background: rgba(0,113,227,0.1); color: var(--accent);
-  }
-  .platform-badge-mac {
-    background: rgba(30,30,35,0.08); color: #3a3a3c;
-  }
-  .platform-divider {
-    flex: 1; height: 1px; background: var(--gray2);
-  }
+  .platform-badge-ios { background: rgba(0,113,227,0.1); color: var(--accent); }
+  .platform-badge-mac { background: rgba(30,30,35,0.08); color: #3a3a3c; }
+  .platform-divider { flex: 1; height: 1px; background: var(--gray2); }
 
   .apps-grid {
     display: grid;
@@ -173,21 +166,16 @@
   }
   .app-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.1); }
   .app-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+
+  /* iOS 카드 — 그라데이션 유지 */
   .card-channelpick::before { background: linear-gradient(90deg, #FF3B30, #FF6B35); }
   .card-keepgoing::before   { background: linear-gradient(90deg, #E8A838, #f0c060); }
   .card-hanpyo::before      { background: linear-gradient(90deg, #1E40AF, #3b60d0); }
-  .card-porotimer::before   { background: linear-gradient(90deg, #0a1628, #ff6a00); }
-  .card-salaryclock::before { background: linear-gradient(90deg, #0d2137, #34c759); }
 
-  /* SalaryClock 비활성 */
-  .app-card-disabled {
-    opacity: 0.65;
-  }
-  .app-card-disabled:hover {
-    transform: none;
-    box-shadow: none;
-    cursor: default;
-  }
+  /* macOS 카드 — 단색 */
+  .card-porotimer::before   { background: #0a1628; }
+  .card-salaryclock::before { background: #34c759; }
+  .card-cleardock::before   { background: #8b3fbf; }
 
   .app-icon-wrap {
     width: 72px; height: 72px; border-radius: 16px;
@@ -204,7 +192,8 @@
   .tag-keepgoing   { color: #E8A838; }
   .tag-hanpyo      { color: #1E40AF; }
   .tag-porotimer   { color: #0a1628; }
-  .tag-salaryclock { color: #0d2137; }
+  .tag-salaryclock { color: #1a7a3a; }
+  .tag-cleardock   { color: #8b3fbf; }
   .app-desc { font-size: 15px; font-weight: 300; color: var(--gray3); line-height: 1.7; flex: 1; margin-bottom: 32px; }
 
   .app-dl-btn {
@@ -216,15 +205,6 @@
   }
   .app-dl-btn:hover { background: #3a3a3c; transform: scale(1.03); }
   .app-dl-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
-
-  /* 출시 예정 버튼 */
-  .app-dl-btn-disabled {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--gray2); color: var(--gray3);
-    padding: 11px 22px; border-radius: 980px;
-    font-size: 14px; font-weight: 500; width: fit-content;
-    cursor: default; pointer-events: none;
-  }
 
   /* ── CONTACT ── */
   .contact { padding: 120px 24px; text-align: center; background: var(--white); }
@@ -380,7 +360,7 @@
       <span class="platform-badge platform-badge-mac">macOS</span>
       <div class="platform-divider"></div>
     </div>
-    <div class="apps-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 420px));">
+    <div class="apps-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 340px));">
 
       <!-- PoroTimer -->
       <div class="app-card card-porotimer reveal">
@@ -397,17 +377,34 @@
         </a>
       </div>
 
-      <!-- SalaryClock -->
-      <div class="app-card card-salaryclock app-card-disabled reveal">
+      <!-- SalaryClock Bar -->
+      <div class="app-card card-salaryclock reveal">
         <div class="app-icon-wrap">
-          <span class="icon-placeholder">💰</span>
+          <img id="icon-salaryclock" src="" alt="SalaryClock Bar 아이콘" style="display:none">
+          <span class="icon-placeholder" id="ph-salaryclock">💰</span>
         </div>
-        <p class="app-name">SalaryClock</p>
+        <p class="app-name">SalaryClock Bar</p>
         <p class="app-tagline tag-salaryclock">메뉴바 연봉 시계</p>
         <p class="app-desc">오늘 내가 번 돈을 실시간으로 확인하세요. 커피·점심 등 지출을 기록하고 순수익을 한눈에 파악하세요.</p>
-        <span class="app-dl-btn-disabled">
-          출시 예정
-        </span>
+        <a class="app-dl-btn" href="https://apps.apple.com/app/id6770527116" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+          Mac App Store
+        </a>
+      </div>
+
+      <!-- ClearDock -->
+      <div class="app-card card-cleardock reveal">
+        <div class="app-icon-wrap">
+          <img id="icon-cleardock" src="" alt="ClearDock 아이콘" style="display:none">
+          <span class="icon-placeholder" id="ph-cleardock">🗂️</span>
+        </div>
+        <p class="app-name">ClearDock</p>
+        <p class="app-tagline tag-cleardock">바탕화면 정리의 시작</p>
+        <p class="app-desc">데스크탑의 스크린샷,다운로드의 중복 ZIP,그 외 불필요한 대용량 파일을 한 번에 정리하세요.</p>
+        <a class="app-dl-btn" href="https://apps.apple.com/app/id6774184208" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+          Mac App Store
+        </a>
       </div>
 
     </div>
@@ -436,12 +433,13 @@
 </footer>
 
 <script>
-  // iTunes API로 앱 아이콘 로드
   const apps = [
     { id: '6762537522', imgId: 'icon-channelpick', phId: 'ph-channelpick' },
     { id: '6763959927', imgId: 'icon-keepgoing',   phId: 'ph-keepgoing'   },
     { id: '6766762438', imgId: 'icon-hanpyo',       phId: 'ph-hanpyo'     },
     { id: '6770058538', imgId: 'icon-porotimer',    phId: 'ph-porotimer'  },
+    { id: '6770527116', imgId: 'icon-salaryclock',  phId: 'ph-salaryclock'},
+    { id: '6774184208', imgId: 'icon-cleardock',    phId: 'ph-cleardock'  },
   ];
 
   async function loadIcon(appId, imgId, phId) {
@@ -457,14 +455,11 @@
           document.getElementById(phId).style.display = 'none';
         }
       }
-    } catch (e) {
-      // 로드 실패 시 이모지 placeholder 유지
-    }
+    } catch (e) {}
   }
 
   apps.forEach(a => loadIcon(a.id, a.imgId, a.phId));
 
-  // 스크롤 reveal 애니메이션
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
