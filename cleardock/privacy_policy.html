@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearDock — Privacy Policy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --plum: #8b3fbf;
+    --plum-dark: #3a1854;
+    --plum-light: #f5eaf9;
+    --plum-mid: #c07de0;
+    --bg: #0e0818;
+    --surface: #160d22;
+    --surface2: #1e1230;
+    --border: rgba(192, 125, 224, 0.15);
+    --text: #f0e8f8;
+    --muted: #9b87b0;
+    --accent: #c07de0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  /* 배경 장식 */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139,63,191,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(192,125,224,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 언어 토글 */
+  .lang-toggle {
+    display: flex;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+    width: fit-content;
+    margin-bottom: 64px;
+  }
+
+  .lang-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+  }
+
+  .lang-btn.active {
+    background: var(--plum);
+    color: #fff;
+  }
+
+  /* 헤더 */
+  .header {
+    margin-bottom: 64px;
+  }
+
+  .app-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .app-name::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .meta {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* 섹션 */
+  .section {
+    margin-bottom: 52px;
+    padding-bottom: 52px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  h2 .num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    background: rgba(139,63,191,0.15);
+    border: 1px solid rgba(192,125,224,0.25);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.85;
+    margin-bottom: 12px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* 강조 박스 */
+  .highlight {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--plum);
+    border-radius: 0 10px 10px 0;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .highlight p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text);
+    opacity: 0.85;
+  }
+
+  /* 리스트 */
+  ul {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  ul li {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+    padding: 8px 0 8px 24px;
+    position: relative;
+    border-bottom: 1px solid rgba(192,125,224,0.06);
+  }
+
+  ul li:last-child { border-bottom: none; }
+
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--plum-mid);
+    opacity: 0.6;
+  }
+
+  /* 연락처 */
+  .contact {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(139,63,191,0.2);
+    border: 1px solid rgba(192,125,224,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .contact-info p {
+    margin: 0;
+    font-size: 13px;
+  }
+
+  .contact-info p:first-child {
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .contact-info a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .contact-info a:hover { text-decoration: underline; }
+
+  /* footer */
+  .footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: var(--muted);
+    opacity: 0.5;
+    margin: 0;
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.6;
+  }
+
+  /* 언어별 표시 */
+  [data-lang] { display: none; }
+  .lang-en [data-lang="en"] { display: block; }
+  .lang-ko [data-lang="ko"] { display: block; }
+  .lang-en [data-lang="en"].inline { display: inline; }
+  .lang-ko [data-lang="ko"].inline { display: inline; }
+</style>
+</head>
+<body class="lang-en">
+
+<div class="container">
+
+  <!-- 언어 토글 -->
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">English</button>
+    <button class="lang-btn" onclick="setLang('ko')">한국어</button>
+  </div>
+
+  <!-- 헤더 -->
+  <header class="header">
+    <div class="app-name">ClearDock</div>
+
+    <h1 data-lang="en">Privacy <em>Policy</em></h1>
+    <h1 data-lang="ko">개인정보 <em>처리방침</em></h1>
+
+    <p class="meta" data-lang="en">Effective date: May 2026 &nbsp;·&nbsp; Version 1.0</p>
+    <p class="meta" data-lang="ko">시행일: 2026년 5월 &nbsp;·&nbsp; 버전 1.0</p>
+  </header>
+
+  <!-- 섹션 1 -->
+  <div class="section">
+    <h2><span class="num">1</span>
+      <span data-lang="en">Overview</span>
+      <span data-lang="ko">개요</span>
+    </h2>
+    <p data-lang="en">ClearDock is a macOS utility app that helps you clean up your Desktop and Downloads folders. We are committed to protecting your privacy. This policy explains what data we access, what we do with it, and what we never do.</p>
+    <p data-lang="ko">ClearDock은 Mac의 바탕화면과 다운로드 폴더를 정리하는 macOS 유틸리티 앱입니다. 본 방침은 앱이 접근하는 데이터와 처리 방식, 그리고 절대 하지 않는 것들을 설명합니다.</p>
+    <div class="highlight">
+      <p data-lang="en">ClearDock does not collect, store, or transmit any personal data. Ever.</p>
+      <p data-lang="ko">ClearDock은 어떠한 개인 데이터도 수집, 저장, 전송하지 않습니다.</p>
+    </div>
+  </div>
+
+  <!-- 섹션 2 -->
+  <div class="section">
+    <h2><span class="num">2</span>
+      <span data-lang="en">Data We Access</span>
+      <span data-lang="ko">접근하는 데이터</span>
+    </h2>
+    <p data-lang="en">ClearDock accesses the following data on your Mac, solely to provide its core features:</p>
+    <p data-lang="ko">ClearDock은 핵심 기능 제공을 위해 아래 데이터에만 접근합니다:</p>
+    <ul>
+      <li data-lang="en">File names in your Desktop and Downloads folders</li>
+      <li data-lang="ko">바탕화면 및 다운로드 폴더의 파일명</li>
+      <li data-lang="en">File sizes and last-modified dates</li>
+      <li data-lang="ko">파일 크기 및 최종 수정일</li>
+      <li data-lang="en">Folder structure at the root level (no recursive scanning)</li>
+      <li data-lang="ko">루트 레벨 폴더 구조 (하위 폴더 재귀 탐색 없음)</li>
+    </ul>
+    <p data-lang="en">ClearDock never reads the contents of your files.</p>
+    <p data-lang="ko">ClearDock은 파일의 내용(콘텐츠)을 절대 읽지 않습니다.</p>
+  </div>
+
+  <!-- 섹션 3 -->
+  <div class="section">
+    <h2><span class="num">3</span>
+      <span data-lang="en">Data We Do Not Collect</span>
+      <span data-lang="ko">수집하지 않는 데이터</span>
+    </h2>
+    <p data-lang="en">The following data is never collected, stored, or transmitted:</p>
+    <p data-lang="ko">아래 데이터는 수집, 저장, 전송되지 않습니다:</p>
+    <ul>
+      <li data-lang="en">Personal information (name, email, Apple ID, etc.)</li>
+      <li data-lang="ko">개인 식별 정보 (이름, 이메일, Apple ID 등)</li>
+      <li data-lang="en">File contents or thumbnails</li>
+      <li data-lang="ko">파일 내용 또는 썸네일</li>
+      <li data-lang="en">Usage analytics or behavioral data</li>
+      <li data-lang="ko">사용 통계 또는 행동 데이터</li>
+      <li data-lang="en">Crash reports or diagnostics</li>
+      <li data-lang="ko">크래시 리포트 또는 진단 데이터</li>
+      <li data-lang="en">Location data</li>
+      <li data-lang="ko">위치 정보</li>
+      <li data-lang="en">Device identifiers</li>
+      <li data-lang="ko">기기 식별자</li>
+    </ul>
+  </div>
+
+  <!-- 섹션 4 -->
+  <div class="section">
+    <h2><span class="num">4</span>
+      <span data-lang="en">Network & Storage</span>
+      <span data-lang="ko">네트워크 및 저장</span>
+    </h2>
+    <p data-lang="en">ClearDock makes no network requests. The app works entirely offline.</p>
+    <p data-lang="ko">ClearDock은 네트워크 요청을 하지 않습니다. 앱은 완전히 오프라인으로 동작합니다.</p>
+    <p data-lang="en">The only data stored locally is a security-scoped bookmark for your Desktop and Downloads folders, saved in your app's sandboxed container. This is used solely to remember your folder access permission between sessions.</p>
+    <p data-lang="ko">로컬에 저장되는 유일한 데이터는 바탕화면 및 다운로드 폴더 접근 권한 북마크로, 앱의 샌드박스 컨테이너에 저장됩니다. 이는 세션 간 폴더 접근 권한을 유지하기 위해서만 사용됩니다.</p>
+  </div>
+
+  <!-- 섹션 5 -->
+  <div class="section">
+    <h2><span class="num">5</span>
+      <span data-lang="en">File Deletion</span>
+      <span data-lang="ko">파일 삭제</span>
+    </h2>
+    <p data-lang="en">All file deletions performed by ClearDock use macOS's built-in Trash mechanism. Files are moved to the Trash and can be recovered at any time. ClearDock never permanently deletes files.</p>
+    <p data-lang="ko">ClearDock의 모든 삭제 작업은 macOS 기본 휴지통 메커니즘을 사용합니다. 파일은 휴지통으로 이동되며 언제든지 복구할 수 있습니다. ClearDock은 파일을 즉각 영구 삭제하지 않습니다.</p>
+  </div>
+
+  <!-- 섹션 6 -->
+  <div class="section">
+    <h2><span class="num">6</span>
+      <span data-lang="en">App Sandbox</span>
+      <span data-lang="ko">앱 샌드박스</span>
+    </h2>
+    <p data-lang="en">ClearDock runs in Apple's App Sandbox, which restricts access to only the resources it needs. Access to your Desktop and Downloads folders requires your explicit permission, granted via a standard macOS folder selection dialog.</p>
+    <p data-lang="ko">ClearDock은 Apple의 앱 샌드박스 환경에서 실행되어 필요한 리소스에만 접근할 수 있습니다. 바탕화면 및 다운로드 폴더 접근은 macOS 표준 폴더 선택 다이얼로그를 통한 사용자의 명시적 허용이 필요합니다.</p>
+  </div>
+
+  <!-- 섹션 7 -->
+  <div class="section">
+    <h2><span class="num">7</span>
+      <span data-lang="en">Third Parties</span>
+      <span data-lang="ko">제3자</span>
+    </h2>
+    <p data-lang="en">ClearDock does not integrate any third-party SDKs, analytics services, advertising networks, or crash reporting tools. No data is shared with any third party.</p>
+    <p data-lang="ko">ClearDock은 제3자 SDK, 분석 서비스, 광고 네트워크, 크래시 리포팅 도구를 사용하지 않습니다. 어떠한 데이터도 제3자와 공유되지 않습니다.</p>
+  </div>
+
+  <!-- 섹션 8 -->
+  <div class="section">
+    <h2><span class="num">8</span>
+      <span data-lang="en">Children's Privacy</span>
+      <span data-lang="ko">아동 개인정보</span>
+    </h2>
+    <p data-lang="en">ClearDock does not knowingly collect any information from children under 13. As the app collects no personal data from any user, this is ensured by design.</p>
+    <p data-lang="ko">ClearDock은 13세 미만 아동의 정보를 의도적으로 수집하지 않습니다. 앱이 어떠한 사용자의 개인 데이터도 수집하지 않으므로, 이는 설계상 보장됩니다.</p>
+  </div>
+
+  <!-- 섹션 9 -->
+  <div class="section">
+    <h2><span class="num">9</span>
+      <span data-lang="en">Changes to This Policy</span>
+      <span data-lang="ko">방침 변경</span>
+    </h2>
+    <p data-lang="en">We may update this Privacy Policy from time to time. Any changes will be reflected on this page with a new effective date. We encourage you to review this policy periodically.</p>
+    <p data-lang="ko">본 개인정보 처리방침은 필요에 따라 업데이트될 수 있습니다. 변경 사항은 새로운 시행일과 함께 이 페이지에 반영됩니다.</p>
+  </div>
+
+  <!-- 섹션 10 - 연락처 -->
+  <div class="section">
+    <h2><span class="num">10</span>
+      <span data-lang="en">Contact</span>
+      <span data-lang="ko">문의</span>
+    </h2>
+    <p data-lang="en">If you have any questions about this Privacy Policy, please contact us:</p>
+    <p data-lang="ko">본 개인정보 처리방침에 대한 문의사항이 있으시면 아래로 연락해주세요:</p>
+    <div class="contact">
+      <div class="contact-icon">✉</div>
+      <div class="contact-info">
+        <p data-lang="en">Developer · Ghost3D</p>
+        <p data-lang="ko">개발자 · Ghost3D</p>
+        <a href="mailto:support@ghost3d.com">support@ghost3d.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <p data-lang="en">© 2026 Ghost3D. All rights reserved.</p>
+    <p data-lang="ko">© 2026 Ghost3D. 모든 권리 보유.</p>
+    <span class="footer-logo">ClearDock</span>
+  </footer>
+
+</div>
+
+<script>
+function setLang(lang) {
+  document.body.className = 'lang-' + lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase().startsWith(lang === 'en' ? 'e' : '한'));
+  });
+  document.documentElement.lang = lang === 'en' ? 'en' : 'ko';
+}
+</script>
+
+</body>
+</html>
