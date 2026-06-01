@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoinChance — Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:       #c8961e;
+      --gold-light: #e8b84b;
+      --gold-dim:   #7a5a0f;
+      --bg:         #080808;
+      --bg2:        #101010;
+      --line:       #1e1e1e;
+      --text:       #c8c0b0;
+      --muted:      #4a4540;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-mono:  'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-serif);
+      font-size: 18px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── 배경 노이즈 ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── 상단 골드 라인 ── */
+    .top-bar {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    /* ── 헤더 ── */
+    header {
+      position: relative;
+      z-index: 1;
+      padding: 72px 40px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .coin-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #f5c842 0deg, #ffe066 40deg, #d4a017 80deg,
+        #f5c842 120deg, #ffe47a 160deg, #c8900a 200deg,
+        #f5c842 240deg, #ffe066 280deg, #d4a017 320deg, #f5c842 360deg
+      );
+      box-shadow: 0 0 0 3px #7a5500, 0 0 24px rgba(200,150,30,0.25);
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+    }
+
+    .app-name {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: #fff;
+    }
+
+    .app-name span {
+      color: var(--gold-light);
+    }
+
+    .app-tagline {
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ── 메인 컨테이너 ── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    /* ── 섹션 ── */
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    p {
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── Contact 카드 ── */
+    .contact-card {
+      margin-top: 28px;
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .contact-card .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px var(--gold);
+    }
+
+    .contact-card a {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--gold-light);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--gold-dim);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .contact-card a:hover {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    /* ── Privacy 리스트 ── */
+    .privacy-list {
+      list-style: none;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .privacy-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .privacy-list li::before {
+      content: '—';
+      color: var(--gold-dim);
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── 버전 배지 ── */
+    .version-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-top: 16px;
+    }
+
+    /* ── 푸터 ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 20px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .bottom-bar {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar"></div>
+
+  <header>
+    <div class="coin-icon">⭐</div>
+    <h1 class="app-name">Coin<span>Chance</span></h1>
+    <p class="app-tagline">Flip a Coin · Trust the Chance</p>
+  </header>
+
+  <main>
+
+    <!-- Contact / Support -->
+    <section>
+      <p class="section-label">01 — Support</p>
+      <h2>Get in Touch</h2>
+      <p>
+        Have a question, found a bug, or have a suggestion?
+        We'd love to hear from you.
+      </p>
+      <div class="contact-card">
+        <div class="dot"></div>
+        <a href="mailto:nemestar@gmail.com">nemestar@gmail.com</a>
+      </div>
+    </section>
+
+    <!-- Privacy Policy -->
+    <section>
+      <p class="section-label">02 — Privacy</p>
+      <h2>Privacy Policy</h2>
+      <p>
+        CoinChance is designed with your privacy in mind.
+        We do not collect, store, or share any personal information.
+      </p>
+      <ul class="privacy-list">
+        <li>No personal data is collected or transmitted.</li>
+        <li>No account or sign-in required.</li>
+        <li>No third-party tracking or analytics.</li>
+        <li>Flip history is stored locally on your device only.</li>
+        <li>Haptic feedback uses only on-device hardware — no data is sent.</li>
+        <li>Ad functionality (if shown) is handled by Google AdMob in accordance with their privacy policy.</li>
+      </ul>
+    </section>
+
+    <!-- Version -->
+    <section>
+      <p class="section-label">03 — Version</p>
+      <h2>App Info</h2>
+      <p>CoinChance is available on the App Store for iPhone.</p>
+      <div class="version-badge">Version 1.0.0</div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 CoinChance · ghost3d · All rights reserved
+  </footer>
+
+  <div class="bottom-bar"></div>
+
+</body>
+</html>
