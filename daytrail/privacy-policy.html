@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DayTrail — 개인정보 처리방침</title>
+  <style>
+    :root {
+      --bg:       #09090F;
+      --surface:  #14141C;
+      --elevated: #1A1A24;
+      --border:   rgba(255,255,255,0.07);
+      --accent:   #4ADE80;
+      --accent-dim: rgba(74,222,128,0.1);
+      --text1:    #F0F0F5;
+      --text2:    #6B7280;
+      --text3:    #374151;
+      --radius:   16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text1);
+      font-family: -apple-system, 'SF Pro Text', 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: rgba(9,9,15,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .nav-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text1);
+      letter-spacing: -0.02em;
+    }
+
+    /* Language toggle */
+    .lang-toggle {
+      display: flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text2);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #061A0E;
+      border-radius: 8px;
+      margin: 2px;
+    }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text1);
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: var(--text2);
+      font-size: 15px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .updated {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--text3);
+    }
+
+    /* ── SUMMARY CARDS ── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 560px) {
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .summary-card .icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .summary-card .label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text1);
+      margin-bottom: 4px;
+    }
+
+    .summary-card .desc {
+      font-size: 11px;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 12px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-num {
+      width: 28px;
+      height: 28px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-Content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text1);
+      letter-spacing: -0.01em;
+    }
+
+    .section p {
+      color: var(--text2);
+      font-size: 14px;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* Item list */
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .item-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .item-body .item-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text1);
+      margin-bottom: 2px;
+    }
+
+    .item-body .item-desc {
+      font-size: 12px;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+
+    /* Tag */
+    .tag {
+      display: inline-block;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text2);
+      margin: 2px 2px 0 0;
+    }
+
+    .tag.green {
+      background: var(--accent-dim);
+      border-color: rgba(74,222,128,0.2);
+      color: var(--accent);
+    }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,222,128,0.15);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-top: 12px;
+    }
+
+    .highlight p {
+      color: #9CA3AF;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    .highlight strong {
+      color: var(--text1);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text3);
+      font-size: 12px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── LANG VISIBILITY ── */
+    [data-lang] { display: none; }
+    body.ko [data-lang="ko"] { display: block; }
+    body.ko [data-lang="ko"].inline { display: inline; }
+    body.en [data-lang="en"] { display: block; }
+    body.en [data-lang="en"].inline { display: inline; }
+
+    /* inline spans inside block elements */
+    .item-body .item-title [data-lang],
+    .item-body .item-desc [data-lang],
+    p [data-lang],
+    .desc [data-lang],
+    .label [data-lang],
+    .hero h1 [data-lang],
+    .hero p [data-lang],
+    .section-title [data-lang],
+    .hero-badge [data-lang],
+    .updated [data-lang] {
+      display: inline;
+    }
+    body.ko [data-lang="en"],
+    body.en [data-lang="ko"] {
+      display: none !important;
+    }
+  </style>
+</head>
+<body class="ko">
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-icon">🗺️</div>
+    <span class="nav-title">DayTrail</span>
+  </div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">한국어</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">
+      <span data-lang="ko">개인정보 처리방침</span>
+      <span data-lang="en">Privacy Policy</span>
+    </div>
+    <h1>
+      <span data-lang="ko">투명한 데이터 처리</span>
+      <span data-lang="en">Transparent Data Practices</span>
+    </h1>
+    <p>
+      <span data-lang="ko">DayTrail은 사용자의 프라이버시를 최우선으로 생각합니다. 모든 데이터는 기기 내에서만 저장되며 외부 서버로 전송되지 않습니다.</span>
+      <span data-lang="en">DayTrail puts your privacy first. All data is stored on-device only and never transmitted to external servers.</span>
+    </p>
+    <span class="updated">
+      <span data-lang="ko">최종 업데이트: 2026년 6월 12일</span>
+      <span data-lang="en">Last updated: June 12, 2026</span>
+    </span>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="icon">📱</div>
+      <div class="label">
+        <span data-lang="ko">온디바이스 저장</span>
+        <span data-lang="en">On-Device Only</span>
+      </div>
+      <div class="desc">
+        <span data-lang="ko">모든 기록은 내 기기에만 저장</span>
+        <span data-lang="en">All records stay on your device</span>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="icon">🚫</div>
+      <div class="label">
+        <span data-lang="ko">서버 전송 없음</span>
+        <span data-lang="en">No Server Upload</span>
+      </div>
+      <div class="desc">
+        <span data-lang="ko">외부 서버로 데이터를 보내지 않음</span>
+        <span data-lang="en">No personal data sent externally</span>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="icon">🔒</div>
+      <div class="label">
+        <span data-lang="ko">사용자 통제</span>
+        <span data-lang="en">User Control</span>
+      </div>
+      <div class="desc">
+        <span data-lang="ko">언제든 데이터 삭제 가능</span>
+        <span data-lang="en">Delete your data anytime</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">
+        <span data-lang="ko">수집하는 정보</span>
+        <span data-lang="en">Information We Collect</span>
+      </div>
+    </div>
+    <p>
+      <span data-lang="ko">DayTrail은 앱의 핵심 기능(장소 자동 감지 및 타임라인 기록)을 제공하기 위해 아래 정보를 수집합니다. 수집된 모든 정보는 기기 내에만 저장됩니다.</span>
+      <span data-lang="en">DayTrail collects the following information to provide its core features (automatic place detection and timeline recording). All collected data is stored only on your device.</span>
+    </p>
+    <div class="item-list">
+      <div class="item">
+        <div class="item-icon">📍</div>
+        <div class="item-body">
+          <div class="item-title">
+            <span data-lang="ko">위치 정보</span>
+            <span data-lang="en">Location Data</span>
+          </div>
+          <div class="item-desc">
+            <span data-lang="ko">Geofence 기반 장소 출입 감지에 사용됩니다. "항상 허용" 권한이 필요하며 백그라운드에서 동작합니다. 정확한 GPS 좌표는 서버로 전송되지 않습니다.</span>
+            <span data-lang="en">Used for Geofence-based place entry/exit detection. Requires "Always Allow" permission and operates in the background. Exact GPS coordinates are never sent to servers.</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">🚶</div>
+        <div class="item-body">
+          <div class="item-title">
+            <span data-lang="ko">동작 및 이동 정보</span>
+            <span data-lang="en">Motion & Activity Data</span>
+          </div>
+          <div class="item-desc">
+            <span data-lang="ko">CMMotionActivity를 통해 걷기, 차량 이동 등 이동 수단을 감지하여 타임라인에 표시합니다. 기기 내에서만 처리됩니다.</span>
+            <span data-lang="en">Detects movement types (walking, vehicle, etc.) via CMMotionActivity to display in your timeline. Processed on-device only.</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">🏠</div>
+        <div class="item-body">
+          <div class="item-title">
+            <span data-lang="ko">장소 및 방문 기록</span>
+            <span data-lang="en">Place & Visit Records</span>
+          </div>
+          <div class="item-desc">
+            <span data-lang="ko">사용자가 직접 등록한 장소 정보와 자동으로 기록된 방문 기록(도착/출발 시각, 체류 시간)이 SwiftData로 기기에 저장됩니다.</span>
+            <span data-lang="en">Place information registered by users and automatically recorded visit logs (arrival/departure times, duration) are stored on-device via SwiftData.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">
+        <span data-lang="ko">정보 이용 목적</span>
+        <span data-lang="en">How We Use Information</span>
+      </div>
+    </div>
+    <div class="item-list">
+      <div class="item">
+        <div class="item-icon">📋</div>
+        <div class="item-body">
+          <div class="item-title">
+            <span data-lang="ko">타임라인 및 인사이트 제공</span>
+            <span data-lang="en">Timeline & Insights</span>
+          </div>
+          <div class="item-desc">
+            <span data-lang="ko">하루 이동 패턴을 시각화하고 체류 시간 통계를 제공하기 위해 사용됩니다.</span>
+            <span data-lang="en">Used to visualize daily movement patterns and provide stay duration statistics.</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">⚡️</div>
+        <div class="item-body">
+          <div class="item-title">
+            <span data-lang="ko">자동화 액션 실행</span>
+            <span data-lang="en">Automation Actions</span>
+          </div>
+          <div class="item-desc">
+            <span data-lang="ko">장소 도착/출발 시 사용자가 설정한 알림, 진동, 단축어 실행에 사용됩니다.</span>
+            <span data-lang="en">Used to trigger user-configured notifications, haptics, and shortcuts upon place arrival/departure.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">
+        <span data-lang="ko">제3자 서비스</span>
+        <span data-lang="en">Third-Party Services</span>
+      </div>
+    </div>
+    <p>
+      <span data-lang="ko">DayTrail은 무료 사용자에게 광고를 표시하기 위해 Google AdMob을 사용합니다. AdMob은 광고 최적화를 위해 기기 식별자 등 제한된 정보를 수집할 수 있습니다.</span>
+      <span data-lang="en">DayTrail uses Google AdMob to display ads to free users. AdMob may collect limited information such as device identifiers for ad optimization.</span>
+    </p>
+    <div class="item-list">
+      <div class="item">
+        <div class="item-icon">📢</div>
+        <div class="item-body">
+          <div class="item-title">Google AdMob</div>
+          <div class="item-desc">
+            <span data-lang="ko">무료 사용자 대상 네이티브 광고 표시. Pro 구매 시 광고가 완전히 제거됩니다.</span>
+            <span data-lang="en">Native ads for free users. Ads are completely removed upon Pro purchase.</span>
+          </div>
+          <div style="margin-top: 6px;">
+            <span class="tag">Google Privacy Policy</span>
+            <span class="tag green">
+              <span data-lang="ko">Pro 시 비활성</span>
+              <span data-lang="en">Disabled on Pro</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">🛒</div>
+        <div class="item-body">
+          <div class="item-title">Apple StoreKit</div>
+          <div class="item-desc">
+            <span data-lang="ko">Pro 인앱 구매 처리에 사용됩니다. 결제 정보는 Apple이 직접 처리하며 DayTrail은 접근하지 않습니다.</span>
+            <span data-lang="en">Used for Pro in-app purchase processing. Payment information is handled directly by Apple; DayTrail has no access to it.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">
+        <span data-lang="ko">데이터 보관 및 삭제</span>
+        <span data-lang="en">Data Retention & Deletion</span>
+      </div>
+    </div>
+    <div class="item-list">
+      <div class="item">
+        <div class="item-icon">📅</div>
+        <div class="item-body">
+          <div class="item-title">
+            <span data-lang="ko">보관 기간</span>
+            <span data-lang="en">Retention Period</span>
+          </div>
+          <div class="item-desc">
+            <span data-lang="ko">무료: 최근 7일 기록 보관 / Pro: 전체 기록 영구 보관 (기기 내)</span>
+            <span data-lang="en">Free: Last 7 days / Pro: All records permanently (on-device)</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">🗑️</div>
+        <div class="item-body">
+          <div class="item-title">
+            <span data-lang="ko">데이터 삭제</span>
+            <span data-lang="en">Data Deletion</span>
+          </div>
+          <div class="item-desc">
+            <span data-lang="ko">설정 → 전체 기록 삭제로 모든 방문 기록을 즉시 삭제할 수 있습니다. 앱 삭제 시 모든 데이터가 함께 삭제됩니다.</span>
+            <span data-lang="en">Delete all visit records instantly via Settings → Delete All Records. Uninstalling the app removes all data.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">
+        <span data-lang="ko">사용자 권리</span>
+        <span data-lang="en">Your Rights</span>
+      </div>
+    </div>
+    <p>
+      <span data-lang="ko">사용자는 언제든지 아래 권리를 행사할 수 있습니다.</span>
+      <span data-lang="en">You can exercise the following rights at any time.</span>
+    </p>
+    <div class="item-list">
+      <div class="item">
+        <div class="item-icon">🔍</div>
+        <div class="item-body">
+          <div class="item-title">
+            <span data-lang="ko">데이터 접근</span>
+            <span data-lang="en">Access</span>
+          </div>
+          <div class="item-desc">
+            <span data-lang="ko">앱 내 타임라인 및 장소 목록에서 모든 저장된 데이터를 확인할 수 있습니다.</span>
+            <span data-lang="en">View all stored data in the app's timeline and places list.</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">✏️</div>
+        <div class="item-body">
+          <div class="item-title">
+            <span data-lang="ko">데이터 수정</span>
+            <span data-lang="en">Correction</span>
+          </div>
+          <div class="item-desc">
+            <span data-lang="ko">GPS 오차 등으로 잘못 기록된 방문 기록을 수동으로 수정하거나 삭제할 수 있습니다.</span>
+            <span data-lang="en">Manually edit or delete incorrectly recorded visits (e.g., GPS errors).</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">🚫</div>
+        <div class="item-body">
+          <div class="item-title">
+            <span data-lang="ko">권한 철회</span>
+            <span data-lang="en">Withdraw Consent</span>
+          </div>
+          <div class="item-desc">
+            <span data-lang="ko">iPhone 설정에서 위치, 동작, 알림 권한을 언제든 철회할 수 있습니다. 단, 핵심 기능이 제한될 수 있습니다.</span>
+            <span data-lang="en">Withdraw location, motion, or notification permissions anytime in iPhone Settings. Note that core features may be limited.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">
+        <span data-lang="ko">아동 보호</span>
+        <span data-lang="en">Children's Privacy</span>
+      </div>
+    </div>
+    <p>
+      <span data-lang="ko">DayTrail은 만 14세 미만 아동을 대상으로 하지 않으며, 의도적으로 아동의 개인정보를 수집하지 않습니다.</span>
+      <span data-lang="en">DayTrail is not directed at children under 14 and does not knowingly collect personal information from children.</span>
+    </p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">
+        <span data-lang="ko">문의</span>
+        <span data-lang="en">Contact</span>
+      </div>
+    </div>
+    <p>
+      <span data-lang="ko">개인정보 처리방침에 대한 문의사항이 있으시면 아래로 연락해 주세요.</span>
+      <span data-lang="en">If you have any questions about this Privacy Policy, please contact us.</span>
+    </p>
+    <div class="highlight">
+      <p>
+        <strong>Fruit Lab (ghost3d)</strong><br/>
+        <span data-lang="ko">앱 내 설정 → 문의하기 또는 </span>
+        <span data-lang="en">In-app Settings → Contact or </span>
+        <strong>com.ghost3d.DayTrail</strong>
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Fruit Lab (ghost3d) · DayTrail</p>
+  <p style="margin-top: 6px;">
+    <span data-lang="ko">본 방침은 사전 고지 후 변경될 수 있습니다.</span>
+    <span data-lang="en">This policy may be updated with prior notice.</span>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = lang;
+    document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+    document.title = lang === 'ko'
+      ? 'DayTrail — 개인정보 처리방침'
+      : 'DayTrail — Privacy Policy';
+  }
+</script>
+
+</body>
+</html>
