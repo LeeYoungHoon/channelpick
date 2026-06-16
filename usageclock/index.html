@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UsageClock - Support & Privacy Policy</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f1020;
+    --surface: #1a1b2e;
+    --surface2: #22243a;
+    --teal: #4ecdc4;
+    --teal-dim: rgba(78, 205, 196, 0.12);
+    --text: #e8e9f0;
+    --text-secondary: #8a8b9e;
+    --border: rgba(255,255,255,0.07);
+    --radius: 12px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(15,16,32,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .nav-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-icon svg { width: 16px; height: 16px; }
+
+  .nav-links {
+    display: flex;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: all 0.15s;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+    background: var(--surface);
+  }
+
+  .nav-links a.active {
+    color: var(--teal);
+    background: var(--teal-dim);
+  }
+
+  /* SECTIONS */
+  .section {
+    display: none;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+
+  .section.active { display: block; }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--teal-dim);
+    color: var(--teal);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .hero p {
+    color: var(--text-secondary);
+    font-size: 16px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 16px;
+  }
+
+  .card h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    margin-top: 20px;
+  }
+
+  .card h3:first-child { margin-top: 0; }
+
+  .card p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    color: var(--text-secondary);
+    font-size: 15px;
+    padding: 6px 0;
+    padding-left: 18px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card ul li:last-child { border-bottom: none; }
+
+  .card ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    opacity: 0.6;
+  }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+
+  .faq-item:last-child { border-bottom: none; }
+
+  .faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .faq-a {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* CONTACT */
+  .contact-box {
+    background: var(--teal-dim);
+    border: 1px solid rgba(78,205,196,0.2);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .contact-box p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .contact-box a {
+    display: inline-block;
+    background: var(--teal);
+    color: #0f1020;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  .contact-box a:hover { opacity: 0.85; }
+
+  /* PRIVACY META */
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .meta-row:last-child { border-bottom: none; }
+
+  .meta-label { color: var(--text-secondary); }
+  .meta-value { color: var(--text); font-weight: 500; }
+
+  .tag {
+    display: inline-block;
+    background: var(--surface2);
+    color: var(--teal);
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+
+  footer a { color: var(--teal); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 26px; }
+    .card { padding: 20px; }
+    nav { padding: 0 16px; }
+    .section { padding: 40px 16px 72px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-icon">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="6.5" stroke="#4ecdc4" stroke-width="1.2"
+          stroke-dasharray="26 41" stroke-dashoffset="10"/>
+        <circle cx="8" cy="8" r="6.5" stroke="#4ecdc4" stroke-width="1.2" opacity="0.4"
+          stroke-dasharray="9 41" stroke-dashoffset="-17"/>
+        <line x1="8" y1="8" x2="5.5" y2="5" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="8" y1="8" x2="10.2" y2="5.4" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <circle cx="8" cy="8" r="1" fill="#4ecdc4"/>
+      </svg>
+    </div>
+    UsageClock
+  </a>
+  <div class="nav-links">
+    <a href="#support" id="nav-support" class="active">Support</a>
+    <a href="#privacy" id="nav-privacy">Privacy Policy</a>
+  </div>
+</nav>
+
+<!-- SUPPORT -->
+<div class="section active" id="support">
+  <div class="hero">
+    <div class="hero-badge">Support</div>
+    <h1>How can we help?</h1>
+    <p>Find answers to common questions or get in touch directly.</p>
+  </div>
+
+  <div class="card">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Why does UsageClock show different times than macOS Screen Time?</div>
+      <div class="faq-a">That's by design. macOS Screen Time counts every app that's open - even in the background. UsageClock only tracks the app you're actively focused on. If Chrome is open but you're working in Xcode, only Xcode gets the time.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why did tracking stop while I was working?</div>
+      <div class="faq-a">UsageClock pauses tracking after a period of no mouse or keyboard activity (default: 5 minutes). This prevents idle time from being counted as active usage. You can adjust the idle timeout in Settings.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I exclude an app from tracking?</div>
+      <div class="faq-a">Open the dropdown panel, click the gear icon to open Settings, then add the app under "Excluded Apps." You can type a bundle ID or pick from currently running apps.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">When does the daily data reset?</div>
+      <div class="faq-a">All usage data resets at midnight each day. Previous days' data is not retained - UsageClock is focused on your current day only.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does UsageClock work when my Mac is sleeping?</div>
+      <div class="faq-a">No. Tracking automatically stops when your Mac goes to sleep or the screen locks, and resumes when you wake it. This ensures only real active usage is counted.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I set UsageClock to launch at login?</div>
+      <div class="faq-a">Open Settings from the dropdown panel and toggle "Launch at login" on.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the "Peak" time shown at the bottom?</div>
+      <div class="faq-a">Peak shows the one-hour window where your total app usage was highest today. It reflects when you were most actively working, regardless of which app you used.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Requirements</h2>
+    <ul>
+      <li>macOS 14 Sonoma or later</li>
+      <li>Apple Silicon or Intel Mac</li>
+      <li>No additional permissions required</li>
+    </ul>
+  </div>
+
+  <div class="contact-box">
+    <p>Can't find what you're looking for? Send us a message and we'll get back to you.</p>
+    <a href="mailto:support@ghost3d.com">Contact Support</a>
+  </div>
+</div>
+
+<!-- PRIVACY POLICY -->
+<div class="section" id="privacy">
+  <div class="hero">
+    <div class="hero-badge">Privacy Policy</div>
+    <h1>Your data stays on your Mac.</h1>
+    <p>UsageClock is built with privacy as a default, not an option.</p>
+  </div>
+
+  <div class="card">
+    <div class="meta-row">
+      <span class="meta-label">Effective date</span>
+      <span class="meta-value">June 2026</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Developer</span>
+      <span class="meta-value">ghost3d</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Data sent to servers</span>
+      <span class="meta-value"><span class="tag">None</span></span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Third-party analytics</span>
+      <span class="meta-value"><span class="tag">None</span></span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Advertising</span>
+      <span class="meta-value"><span class="tag">None</span></span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>What we collect</h2>
+
+    <h3>App usage data</h3>
+    <p>UsageClock records which apps you use and for how long each day. This data is stored locally on your Mac using SwiftData and is never transmitted anywhere.</p>
+
+    <h3>What is not collected</h3>
+    <ul>
+      <li>No account or personal information</li>
+      <li>No browsing history or URLs</li>
+      <li>No keystrokes or mouse activity content</li>
+      <li>No screen content or screenshots</li>
+      <li>No location data</li>
+      <li>No crash reports or analytics</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>How data is stored</h2>
+    <p>All data is stored locally in your Mac's Application Support folder using Apple's SwiftData framework. The data is scoped to your user account and is not accessible to other users or applications.</p>
+    <p>Data resets automatically at midnight each day. No historical data is retained beyond the current day.</p>
+  </div>
+
+  <div class="card">
+    <h2>Input event monitoring</h2>
+    <p>UsageClock monitors global mouse and keyboard events solely to detect idle periods (no activity for a configurable duration). The content of keystrokes is never read or recorded - only the timestamp of the most recent input event is used to determine whether you are actively at your computer.</p>
+  </div>
+
+  <div class="card">
+    <h2>Third parties</h2>
+    <p>UsageClock does not use any third-party SDKs, analytics services, advertising networks, or crash reporting tools. The app makes no network requests of any kind.</p>
+  </div>
+
+  <div class="card">
+    <h2>Deleting your data</h2>
+    <p>To delete all stored usage data, remove the following folder:</p>
+    <p style="font-family: monospace; font-size: 13px; background: #0f1020; padding: 10px 14px; border-radius: 8px; color: #4ecdc4; margin-top: 8px;">
+      ~/Library/Containers/com.ghost3d.UsageClock/
+    </p>
+    <p style="margin-top: 12px;">Or simply uninstall UsageClock - no data remains on your system after removal.</p>
+  </div>
+
+  <div class="card">
+    <h2>Changes to this policy</h2>
+    <p>If this privacy policy changes in a meaningful way, the updated version will be posted at this URL with a new effective date.</p>
+  </div>
+
+  <div class="contact-box">
+    <p>Questions about privacy? We're happy to answer.</p>
+    <a href="mailto:support@ghost3d.com">Contact Us</a>
+  </div>
+</div>
+
+<footer>
+  <p>Copyright 2026 ghost3d - <a href="#">UsageClock</a></p>
+</footer>
+
+<script>
+  function show(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    var navEl = document.getElementById('nav-' + id);
+    if (navEl) navEl.classList.add('active');
+    window.scrollTo({ top: 0 });
+  }
+
+  function handleHash() {
+    var hash = location.hash.replace('#', '');
+    if (hash === 'privacy') {
+      show('privacy');
+    } else {
+      show('support');
+    }
+  }
+
+  window.addEventListener('hashchange', handleHash);
+  handleHash();
+</script>
+</body>
+</html>
